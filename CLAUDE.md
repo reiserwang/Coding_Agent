@@ -1,0 +1,48 @@
+# CLAUDE.md
+**Agent Protocol for Claude Code**
+
+## 🤖 Agent Registry
+| Role | Resp | Path |
+| :--- | :--- | :--- |
+| **Manager** | **Orchestrator**. Start here. | `.agents/manager/AGENT.md` |
+| **Planner** | **Thinking**. Specs, Arch, Plans. | `.agents/planner/AGENT.md` |
+| **Reviewer** | **Quality**. Sec, Perf, Refactor. | `.agents/code_reviewer/AGENT.md` |
+| **Tester** | **Verify**. Plans, Auto-tests. | `.agents/tester/AGENT.md` |
+| **DevOps** | **Ops**. Git, CI/CD, Docker. | `.agents/devops/AGENT.md` |
+| **Security** | **Sec**. SBOM, Threat Model. | `.agents/security/AGENT.md` |
+| **UI/UX** | **Design**. Styles, Palettes. | `.agents/ui_ux/AGENT.md` |
+| **Writer** | **Docs**. API, Guides. | `.agents/tech_writer/AGENT.md` |
+
+## 📂 Artifact Standards
+| Type | Path | Owner |
+| :--- | :--- | :--- |
+| **Specs** | `specs/` | Planner |
+| **Design** | `design/` | Planner |
+| **Docs** | `docs/` | Writer |
+| **Tests** | `tests/` | Tester |
+| **Sec** | `security/` | Security |
+| **State** | `.agents/SCRATCHPAD.md` | **ALL** |
+
+## 🧠 Claude-Specific Protocol
+1.  **Subagent Pattern**: Use `Task` tool to spawn specialized agents. Pass Agent path as context.
+    ```
+    Task: "Read .agents/planner/AGENT.md and act as the Planner. Create specs for [feature]."
+    ```
+2.  **Parallel Execution**: Use `Task` tool with `TodoWrite` to define non-blocking subtasks.
+3.  **State Sync**: Read/Write `.agents/SCRATCHPAD.md` before/after major steps.
+4.  **File Focus**: Claude Code works best with explicit file paths. Always specify paths.
+
+## ⚡ Quick-Start
+```bash
+# 1. User Request
+"Build a login feature"
+
+# 2. Manager Starts
+Read CLAUDE.md -> Initialize SCRATCHPAD -> Spawn Planner
+
+# 3. Planner Thinks
+Write specs/login.md -> Write design/login_arch.md -> Output task list
+
+# 4. Manager Executes
+Assign tasks to Coder -> Review -> Test -> Deploy
+```
