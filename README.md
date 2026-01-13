@@ -15,19 +15,28 @@ A modular, token-optimized agent architecture for AI-assisted software developme
 ├── GEMINI.md              # Index for Gemini agents
 ├── CLAUDE.md              # Index for Claude Code agents
 ├── README.md              # This file
-└── .agents/
-    ├── SCRATCHPAD.md      # Shared state (live blackboard)
-    ├── STANDARDS.md       # Coding standards for all agents
-    ├── workflows/         # Reusable agent workflows
-    │   └── iteration-loop.md
-    ├── orchestrator/      # Orchestrator
-    ├── planner/           # Specs + Architecture + Tasks
-    ├── code_reviewer/     # Quality
-    ├── tester/            # Verification
-    ├── devops/            # Git + CI/CD + Checkpoints
-    ├── security/          # SBOM + Threat Model
-    ├── ui_ux/             # Design intelligence
-    └── tech_writer/       # Documentation
+├── .agents/               # Core agent definitions
+│   ├── SCRATCHPAD.md      # Shared state (live blackboard)
+│   ├── STANDARDS.md       # Coding standards for all agents
+│   ├── workflows/         # Reusable agent workflows
+│   │   └── iteration-loop.md
+│   ├── orchestrator/      # Orchestrator
+│   ├── planner/           # Specs + Architecture + Tasks
+│   ├── code_reviewer/     # Quality
+│   ├── tester/            # Verification
+│   ├── devops/            # Git + CI/CD + Checkpoints
+│   ├── security/          # SBOM + Threat Model
+│   ├── ui_ux/             # Design intelligence
+│   └── tech_writer/       # Documentation
+└── .shared/               # Shared plugins & skills
+    ├── blocked_commands.json
+    ├── plugins/           # Slash commands + agents
+    │   ├── ralph-wiggum/
+    │   ├── pr-review-toolkit/
+    │   ├── feature-dev/
+    │   └── frontend-design/
+    └── skills/            # Passive knowledge bases
+        └── frontend-design/
 ```
 
 ## Quick Start
@@ -171,13 +180,27 @@ Skills are passive knowledge bases referenced by agents or users:
 ### Directory Structure
 ```
 .shared/
+├── blocked_commands.json  # Security hooks blocklist
 ├── plugins/
-│   ├── ralph-wiggum/     # Iterative loops
-│   ├── pr-review-toolkit/ # PR review
-│   ├── feature-dev/      # Feature development
-│   └── frontend-design/  # (manifest only)
+│   ├── ralph-wiggum/      # Iterative development loops
+│   │   ├── plugin.json
+│   │   ├── commands/      # ralph-loop, cancel-ralph, help
+│   │   ├── hooks/         # Pre/post execution hooks
+│   │   └── scripts/
+│   ├── pr-review-toolkit/ # Comprehensive PR review
+│   │   ├── plugin.json
+│   │   ├── commands/      # review-pr
+│   │   └── agents/        # 6 specialized reviewers
+│   ├── feature-dev/       # Guided feature development
+│   │   ├── plugin.json
+│   │   ├── commands/      # feature-dev
+│   │   └── agents/        # architect, explorer, reviewer
+│   └── frontend-design/   # UI/UX plugin (manifest)
+│       └── plugin.json
 └── skills/
-    └── frontend-design/  # UI/UX skill
+    └── frontend-design/   # UI/UX design knowledge
+        ├── SKILL.md       # Design guidelines
+        └── README.md
 ```
 
 **Add a plugin:**
