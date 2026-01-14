@@ -224,6 +224,7 @@ mkdir .shared/skills/my-skill
 - **KERNEL Prompt Framework**: [Prompt engineering best practices](https://www.reddit.com/r/ClaudeAI/comments/1i1k5xm/kernel_a_prompt_engineering_framework_based_on/) - Reddit post
 - **Claude Code Hooks**: [Official Claude Code hooks documentation](https://docs.anthropic.com/en/docs/claude-code/hooks)
 - **Gemini CLI**: [Google Gemini CLI documentation](https://github.com/google-gemini/gemini-cli)
+- ** Skills for Claude Code**: [Official Claude Code skills documentation](https://docs.anthropic.com/en/docs/claude-code/skills)
 
 ## License
 MIT
