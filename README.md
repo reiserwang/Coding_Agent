@@ -35,8 +35,16 @@ A modular, token-optimized agent architecture for AI-assisted software developme
     │   ├── pr-review-toolkit/
     │   ├── feature-dev/
     │   └── frontend-design/
-    └── skills/            # Passive knowledge bases
-        └── frontend-design/
+    └── skills/            # Workflow + knowledge skills
+        ├── SKILL_INDEX.md   # Master skill index
+        ├── brainstorming/
+        ├── writing-plans/
+        ├── executing-plans/
+        ├── test-driven-development/
+        ├── systematic-debugging/
+        ├── requesting-code-review/
+        ├── frontend-design/
+        └── explaining-code/
 ```
 
 ## Quick Start
@@ -164,17 +172,26 @@ Plugins provide slash commands (`/command`) and specialized agents. Trigger with
 - `code-explorer` - Analyze existing code
 - `code-reviewer` - Quality review
 
-### Skills (Knowledge/Reference)
+### Skills (Workflow + Knowledge)
 
-Skills are passive knowledge bases referenced by agents or users:
+Skills are invoked by agents for structured workflows. Based on [obra/superpowers](https://github.com/obra/superpowers).
 
-| Skill | Purpose |
-|-------|---------|
-| **frontend-design** | Distinctive UI/UX implementation guidelines |
+| Skill | Purpose | Iron Law |
+|-------|---------|----------|
+| **brainstorming** | Socratic design refinement | One question at a time |
+| **writing-plans** | Bite-sized task plans | 2-5 min per step |
+| **executing-plans** | Batch execution with checkpoints | Stop when blocked |
+| **test-driven-development** | RED-GREEN-REFACTOR cycle | No code without failing test |
+| **systematic-debugging** | 4-phase root cause analysis | No fixes without investigation |
+| **requesting-code-review** | Two-stage review process | Review early, review often |
+| **frontend-design** | Distinctive UI/UX guidelines | - |
+| **explaining-code** | Code explanations with diagrams | - |
 
-**Use a skill:**
+**Skill Invocation Pattern:**
 ```
-"Build a dashboard using the frontend-design skill"
+1. Check .shared/skills/SKILL_INDEX.md
+2. Announce: "I'm using the [skill] skill to [purpose]."
+3. Follow skill instructions exactly
 ```
 
 ### Directory Structure
@@ -198,9 +215,15 @@ Skills are passive knowledge bases referenced by agents or users:
 │   └── frontend-design/   # UI/UX plugin (manifest)
 │       └── plugin.json
 └── skills/
-    └── frontend-design/   # UI/UX design knowledge
-        ├── SKILL.md       # Design guidelines
-        └── README.md
+    ├── SKILL_INDEX.md         # Master skill reference
+    ├── brainstorming/         # Design refinement
+    ├── writing-plans/         # Task decomposition
+    ├── executing-plans/       # Batch execution
+    ├── test-driven-development/  # TDD workflow
+    ├── systematic-debugging/  # Root cause analysis
+    ├── requesting-code-review/  # Two-stage review
+    ├── frontend-design/       # UI/UX guidelines
+    └── explaining-code/       # Code explanations
 ```
 
 **Add a plugin:**
@@ -218,13 +241,14 @@ mkdir .shared/skills/my-skill
 
 ## References
 
+- **Superpowers Skills**: [obra/superpowers](https://github.com/obra/superpowers) - Claude Code superpowers: core skills library
 - **Ralph Wiggum Technique**: [Autonomous iteration loop for AI agents](https://www.reddit.com/r/ClaudeAI/comments/1i1vz5h/claude_will_code_for_you_while_you_sleep_if_you/) - Reddit post by u/ProfessionalFar5209
 - **PR Review Toolkit**: Inspired by [Harper Carroll's PR Review agents](https://github.com/g0t4/prompt-engineers-only/tree/main) - Prompt Engineers Only
 - **Multi-Agent Orchestration**: [Anthropic's agentic patterns](https://www.anthropic.com/engineering/building-effective-agents) - Building Effective Agents
 - **KERNEL Prompt Framework**: [Prompt engineering best practices](https://www.reddit.com/r/ClaudeAI/comments/1i1k5xm/kernel_a_prompt_engineering_framework_based_on/) - Reddit post
 - **Claude Code Hooks**: [Official Claude Code hooks documentation](https://docs.anthropic.com/en/docs/claude-code/hooks)
 - **Gemini CLI**: [Google Gemini CLI documentation](https://github.com/google-gemini/gemini-cli)
-- ** Skills for Claude Code**: [Official Claude Code skills documentation](https://docs.anthropic.com/en/docs/claude-code/skills)
+- **Skills for Claude Code**: [Official Claude Code skills documentation](https://docs.anthropic.com/en/docs/claude-code/skills)
 
 ## License
 MIT
