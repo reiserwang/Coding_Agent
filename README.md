@@ -28,23 +28,29 @@ A modular, token-optimized agent architecture for AI-assisted software developme
 │   ├── security/          # SBOM + Threat Model
 │   ├── ui_ux/             # Design intelligence
 │   └── tech_writer/       # Documentation
-└── .shared/               # Shared plugins & skills
+├── .gemini/               # Gemini CLI configuration
+│   ├── settings.json
+│   ├── hooks/
+│   └── skills/            # Gemini-specific skills
+│       ├── SKILL_INDEX.md
+│       ├── brainstorming/
+│       ├── writing-plans/
+│       └── ...
+├── .claude/               # Claude Code configuration
+│   ├── settings.local.json
+│   ├── hooks/
+│   └── skills/            # Claude-specific skills
+│       ├── SKILL_INDEX.md
+│       ├── brainstorming/
+│       ├── writing-plans/
+│       └── ...
+└── .shared/               # Shared plugins & hooks
     ├── blocked_commands.json
-    ├── plugins/           # Slash commands + agents
-    │   ├── ralph-wiggum/
-    │   ├── pr-review-toolkit/
-    │   ├── feature-dev/
-    │   └── frontend-design/
-    └── skills/            # Workflow + knowledge skills
-        ├── SKILL_INDEX.md   # Master skill index
-        ├── brainstorming/
-        ├── writing-plans/
-        ├── executing-plans/
-        ├── test-driven-development/
-        ├── systematic-debugging/
-        ├── requesting-code-review/
-        ├── frontend-design/
-        └── explaining-code/
+    └── plugins/           # Slash commands + agents
+        ├── ralph-wiggum/
+        ├── pr-review-toolkit/
+        ├── feature-dev/
+        └── frontend-design/
 ```
 
 ## Quick Start
@@ -187,56 +193,69 @@ Skills are invoked by agents for structured workflows. Based on [obra/superpower
 | **frontend-design** | Distinctive UI/UX guidelines | - |
 | **explaining-code** | Code explanations with diagrams | - |
 
+> **Note:** Skills are maintained separately for each agent platform:
+> - **Gemini/Antigravity**: `.gemini/skills/`  
+> - **Claude Code**: `.claude/skills/`
+> 
+> This allows each agent to have optimized skill instructions for their specific capabilities.
+
 **Skill Invocation Pattern:**
 ```
-1. Check .shared/skills/SKILL_INDEX.md
+1. Check .gemini/skills/SKILL_INDEX.md (Gemini) or .claude/skills/SKILL_INDEX.md (Claude)
 2. Announce: "I'm using the [skill] skill to [purpose]."
 3. Follow skill instructions exactly
 ```
 
-### Directory Structure
-```
-.shared/
-├── blocked_commands.json  # Security hooks blocklist
-├── plugins/
-│   ├── ralph-wiggum/      # Iterative development loops
-│   │   ├── plugin.json
-│   │   ├── commands/      # ralph-loop, cancel-ralph, help
-│   │   ├── hooks/         # Pre/post execution hooks
-│   │   └── scripts/
-│   ├── pr-review-toolkit/ # Comprehensive PR review
-│   │   ├── plugin.json
-│   │   ├── commands/      # review-pr
-│   │   └── agents/        # 6 specialized reviewers
-│   ├── feature-dev/       # Guided feature development
-│   │   ├── plugin.json
-│   │   ├── commands/      # feature-dev
-│   │   └── agents/        # architect, explorer, reviewer
-│   └── frontend-design/   # UI/UX plugin (manifest)
-│       └── plugin.json
-└── skills/
-    ├── SKILL_INDEX.md         # Master skill reference
-    ├── brainstorming/         # Design refinement
-    ├── writing-plans/         # Task decomposition
-    ├── executing-plans/       # Batch execution
-    ├── test-driven-development/  # TDD workflow
-    ├── systematic-debugging/  # Root cause analysis
-    ├── requesting-code-review/  # Two-stage review
-    ├── frontend-design/       # UI/UX guidelines
-    └── explaining-code/       # Code explanations
+### Antigravity Skills Setup
+
+To enable skills in [Google Antigravity](https://antigravity.google/docs/skills), copy skills to your project:
+
+```bash
+# Copy skills to your project's .gemini/skills/ directory
+cp -R /path/to/Coding_Agent/.gemini/skills /your/project/.gemini/skills
 ```
 
-**Add a plugin:**
-```bash
-mkdir -p .shared/plugins/my-plugin/commands
-# Create plugin.json manifest
-# Add command .md files with YAML frontmatter
+Each skill folder contains a `SKILL.md` with YAML frontmatter:
+```yaml
+---
+name: skill-name
+description: "When to use this skill..."
+---
+# Skill instructions in markdown
+```
+
+See [Antigravity Skills Documentation](https://antigravity.google/docs/skills) for more details.
+
+### Directory Structure
+```
+.gemini/skills/              # Gemini-specific skills
+├── SKILL_INDEX.md
+├── brainstorming/
+├── writing-plans/
+└── ...
+
+.claude/skills/              # Claude-specific skills
+├── SKILL_INDEX.md
+├── brainstorming/
+├── writing-plans/
+└── ...
+
+.shared/plugins/             # Shared plugins (commands + agents)
+├── ralph-wiggum/
+├── pr-review-toolkit/
+├── feature-dev/
+└── frontend-design/
 ```
 
 **Add a skill:**
 ```bash
-mkdir .shared/skills/my-skill
+# For Gemini
+mkdir .gemini/skills/my-skill
 # Create SKILL.md with frontmatter (name, description) + instructions
+
+# For Claude
+mkdir .claude/skills/my-skill
+# Create SKILL.md with the same format
 ```
 
 ## References

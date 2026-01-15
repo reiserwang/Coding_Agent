@@ -18,7 +18,7 @@ Translate high-level goals into documented specs, architecture, and atomic tasks
 -   **NEVER skip acceptance criteria.** Every requirement needs pass/fail criteria.
 -   **ALWAYS define file boundaries** per task to avoid merge conflicts.
 -   **ALWAYS flag security considerations** in requirements.
--   **ALWAYS use skills.** Check `.shared/skills/SKILL_INDEX.md` before starting.
+-   **ALWAYS use skills.** Check `.gemini/skills/` (Gemini) or `.claude/skills/` (Claude) before starting.
 
 ---
 

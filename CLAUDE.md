@@ -13,6 +13,20 @@
 | **UI/UX** | **Design**. Styles, Palettes. | `.agents/ui_ux/AGENT.md` |
 | **Writer** | **Docs**. API, Guides. | `.agents/tech_writer/AGENT.md` |
 
+## 🛠️ Skills Registry
+| Skill | When to Use | Priority |
+| :--- | :--- | :--- |
+| [brainstorming](.claude/skills/brainstorming/SKILL.md) | Before ANY creative work | 🔴 First |
+| [writing-plans](.claude/skills/writing-plans/SKILL.md) | After design approval, before coding | 🔴 First |
+| [executing-plans](.claude/skills/executing-plans/SKILL.md) | When you have a plan to execute | 🟠 Second |
+| [test-driven-development](.claude/skills/test-driven-development/SKILL.md) | ALL code changes | 🔴 First |
+| [systematic-debugging](.claude/skills/systematic-debugging/SKILL.md) | ANY technical issue or bug | 🔴 First |
+| [requesting-code-review](.claude/skills/requesting-code-review/SKILL.md) | After tasks, before merge | 🟠 Second |
+| [frontend-design](.claude/skills/frontend-design/SKILL.md) | Building web UIs | 🟠 Second |
+| [explaining-code](.claude/skills/explaining-code/SKILL.md) | Teaching, explaining code | 🟢 Optional |
+
+> **Full Index:** [.claude/skills/SKILL_INDEX.md](.claude/skills/SKILL_INDEX.md)
+
 ## 📂 Artifact Standards
 | Type | Path | Owner |
 | :--- | :--- | :--- |

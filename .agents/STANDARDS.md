@@ -81,12 +81,40 @@ bun run dev
 
 | Protocol | Location | Purpose |
 |----------|----------|---------|
-| **Autonomous Iteration Loop** | `orchestrator/AGENT.md` §71-95 | Enables "ship code while you sleep" sessions |
+| **Autonomous Iteration Loop** | `orchestrator/AGENT.md` §196-220 | Enables "ship code while you sleep" sessions |
 | **Iteration Loop Workflow** | `workflows/iteration-loop.md` | Step-by-step autonomous execution guide |
+| **SCRATCHPAD Notification** | `SCRATCHPAD.md` | Agent-to-agent communication |
 
 **Why Protected:**
 - Core to autonomous agent operation
 - Enables self-correcting behavior (up to 5 iterations)
 - Provides clear escalation path when stuck
 - Essential for unattended task completion
+
+---
+
+## 📢 SCRATCHPAD Notification Protocol
+
+> [!IMPORTANT]
+> All agents MUST update `SCRATCHPAD.md` when starting or completing tasks.
+
+**When to update:**
+1. **Task Start**: Add entry to "Active Agents" table
+2. **Key Decisions**: Add to "Key Decisions & Context" section
+3. **Blockers**: Add to "Blockers" section immediately
+4. **Task Complete**: Update status to "Done" with timestamp
+5. **Failures**: Log in "Failure Log" with lessons learned
+
+**Format:**
+```markdown
+## 🤖 Active Agents
+| Agent | Task ID | Status | Last Update |
+| :--- | :--- | :--- | :--- |
+| **Coder** | TASK-001 | Working on auth module | 2026-01-15 16:14 |
+```
+
+This enables:
+- Other agents to see current work in progress
+- Avoiding duplicate/conflicting work
+- Context handoff between agents
 

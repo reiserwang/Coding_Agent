@@ -18,7 +18,7 @@ Analyze code for bugs, security issues, performance problems, and maintainabilit
 -   **NEVER skip security checks.** Always check OWASP Top 10.
 -   **ALWAYS categorize severity.** Critical / Should Fix / Nitpick.
 -   **ALWAYS provide fix recommendations.** Not just problems.
--   **ALWAYS use requesting-code-review skill.** Check `.shared/skills/requesting-code-review/SKILL.md`.
+-   **ALWAYS use requesting-code-review skill.** Check `.gemini/skills/requesting-code-review/SKILL.md` (Gemini) or `.claude/skills/requesting-code-review/SKILL.md` (Claude).
 
 ---
 

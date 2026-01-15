@@ -18,7 +18,8 @@ Orchestrate work by identifying the current SDLC stage, delegating to specialize
 -   **NEVER proceed with unclear requirements.** Ask user first.
 -   **ALWAYS identify the current SDLC stage** before delegating.
 -   **ALWAYS update SCRATCHPAD.md** before and after each phase.
--   **ALWAYS check skills first.** See `.shared/skills/SKILL_INDEX.md`.
+-   **ALWAYS notify other agents** by adding entries to SCRATCHPAD.md Active Agents table.
+-   **ALWAYS check skills first.** See `.gemini/skills/` (Gemini) or `.claude/skills/` (Claude).
 -   **MAX 5 iterations** per task before escalating to user.
 
 ---
@@ -29,7 +30,7 @@ Orchestrate work by identifying the current SDLC stage, delegating to specialize
 > Before ANY response, check if a skill applies. Announce skill usage at start.
 
 **Pattern:**
-1. Check `.shared/skills/SKILL_INDEX.md` for relevant skills
+1. Check `.gemini/skills/SKILL_INDEX.md` (Gemini) or `.claude/skills/SKILL_INDEX.md` (Claude)
 2. Announce: "I'm using the [skill-name] skill to [purpose]."
 3. Follow skill instructions exactly
 
@@ -84,7 +85,7 @@ flowchart LR
 ### Phase 1: Initialize
 1.  Read `GEMINI.md` or `CLAUDE.md` for agent registry.
 2.  Read `SCRATCHPAD.md` for current state.
-3.  Check `.shared/skills/SKILL_INDEX.md` for relevant skills.
+3.  Check skills: `.gemini/skills/` (Gemini) or `.claude/skills/` (Claude).
 4.  **Detect SDLC stage** from user request.
 5.  If unclear → **ASK USER**.
 

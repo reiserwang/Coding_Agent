@@ -17,16 +17,16 @@
 ## 🛠️ Skills Registry
 | Skill | When to Use | Priority |
 | :--- | :--- | :--- |
-| [brainstorming](.shared/skills/brainstorming/SKILL.md) | Before ANY creative work | 🔴 First |
-| [writing-plans](.shared/skills/writing-plans/SKILL.md) | After design approval, before coding | 🔴 First |
-| [executing-plans](.shared/skills/executing-plans/SKILL.md) | When you have a plan to execute | 🟠 Second |
-| [test-driven-development](.shared/skills/test-driven-development/SKILL.md) | ALL code changes | 🔴 First |
-| [systematic-debugging](.shared/skills/systematic-debugging/SKILL.md) | ANY technical issue or bug | 🔴 First |
-| [requesting-code-review](.shared/skills/requesting-code-review/SKILL.md) | After tasks, before merge | 🟠 Second |
-| [frontend-design](.shared/skills/frontend-design/SKILL.md) | Building web UIs | 🟠 Second |
-| [explaining-code](.shared/skills/explaining-code/SKILL.md) | Teaching, explaining code | 🟢 Optional |
+| [brainstorming](.gemini/skills/brainstorming/SKILL.md) | Before ANY creative work | 🔴 First |
+| [writing-plans](.gemini/skills/writing-plans/SKILL.md) | After design approval, before coding | 🔴 First |
+| [executing-plans](.gemini/skills/executing-plans/SKILL.md) | When you have a plan to execute | 🟠 Second |
+| [test-driven-development](.gemini/skills/test-driven-development/SKILL.md) | ALL code changes | 🔴 First |
+| [systematic-debugging](.gemini/skills/systematic-debugging/SKILL.md) | ANY technical issue or bug | 🔴 First |
+| [requesting-code-review](.gemini/skills/requesting-code-review/SKILL.md) | After tasks, before merge | 🟠 Second |
+| [frontend-design](.gemini/skills/frontend-design/SKILL.md) | Building web UIs | 🟠 Second |
+| [explaining-code](.gemini/skills/explaining-code/SKILL.md) | Teaching, explaining code | 🟢 Optional |
 
-> **Full Index:** [.shared/skills/SKILL_INDEX.md](.shared/skills/SKILL_INDEX.md)
+> **Full Index:** [.gemini/skills/SKILL_INDEX.md](.gemini/skills/SKILL_INDEX.md)
 
 ## 📂 Artifact Standards
 | Type | Path | Owner |
@@ -42,11 +42,11 @@
 
 ## 🧠 Shared Memory Protocol
 1.  **State**: Always read/write `.agents/SCRATCHPAD.md` for active context.
-2.  **Skills**: Check `.shared/skills/SKILL_INDEX.md` before any task.
+2.  **Skills**: Check `.gemini/skills/SKILL_INDEX.md` before any task.
 3.  **Flow**: Orchestrator → Planner (brainstorming → writing-plans) → Coder (executing-plans + TDD) → Verify.
 4.  **Git**: DevOps owns branches/PRs. Check `task.md` for top-level tracking.
 
 ## 🎯 Skill Invocation Pattern
-1. **Check** `.shared/skills/SKILL_INDEX.md` for relevant skills
+1. **Check** `.gemini/skills/SKILL_INDEX.md` for relevant skills
 2. **Announce** "I'm using the [skill-name] skill to [purpose]."
 3. **Follow** skill instructions exactly

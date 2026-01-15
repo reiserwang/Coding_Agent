@@ -19,7 +19,7 @@ Write test plans, implement automated tests, execute test suites, and report res
 -   **ALWAYS include expected values.** Tests must have assertions.
 -   **ALWAYS report coverage.** Line + branch coverage required.
 -   **Unit tests < 100ms each.** Fast feedback loop.
--   **ALWAYS use TDD skill.** Check `.shared/skills/test-driven-development/SKILL.md`.
+-   **ALWAYS use TDD skill.** Check `.gemini/skills/test-driven-development/SKILL.md` (Gemini) or `.claude/skills/test-driven-development/SKILL.md` (Claude).
 
 ---
 
