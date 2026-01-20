@@ -1,273 +1,111 @@
-# AI Agent Framework
+# AnyAnomaly
 
-A modular, token-optimized agent architecture for AI-assisted software development.
+**AnyAnomaly** is an interactive, natural-language-driven Video Anomaly Detection (VAD) system. It leverages state-of-the-art Large Vision-Language Models (specifically [MiniCPM-V 2.6](https://huggingface.co/openbmb/MiniCPM-V-2_6)) to allow users to search for specific actions or anomalies in videos (e.g., "fighting", "running", "truck") simply by typing a prompt.
 
-## Features
-- **Orchestrator Pattern**: Orchestrator delegates to specialized subagents
-- **Shared State**: Central `SCRATCHPAD.md` for multi-agent coordination
-- **Autonomous Iteration**: Ralph Wiggum technique for "ship code while you sleep"
-- **Multi-Platform**: Supports Gemini/Antigravity and Claude Code
-- **Token Optimized**: Concise index files save context window
+The system provides a visual timeline of events, Key Frame Selection (KFS), and explainable scoring, making complex video analysis accessible and intuitive.
 
-## Structure
-```
-.
-├── GEMINI.md              # Index for Gemini agents
-├── CLAUDE.md              # Index for Claude Code agents
-├── README.md              # This file
-├── .agents/               # Core agent definitions
-│   ├── SCRATCHPAD.md      # Shared state (live blackboard)
-│   ├── STANDARDS.md       # Coding standards for all agents
-│   ├── workflows/         # Reusable agent workflows
-│   │   └── iteration-loop.md
-│   ├── orchestrator/      # Orchestrator
-│   ├── planner/           # Specs + Architecture + Tasks
-│   ├── code_reviewer/     # Quality
-│   ├── tester/            # Verification
-│   ├── devops/            # Git + CI/CD + Checkpoints
-│   ├── security/          # SBOM + Threat Model
-│   ├── ui_ux/             # Design intelligence
-│   └── tech_writer/       # Documentation
-├── .gemini/               # Gemini CLI configuration
-│   ├── settings.json
-│   ├── hooks/
-│   └── skills/            # Gemini-specific skills
-│       ├── SKILL_INDEX.md
-│       ├── brainstorming/
-│       ├── writing-plans/
-│       └── ...
-├── .claude/               # Claude Code configuration
-│   ├── settings.local.json
-│   ├── hooks/
-│   └── skills/            # Claude-specific skills
-│       ├── SKILL_INDEX.md
-│       ├── brainstorming/
-│       ├── writing-plans/
-│       └── ...
-└── .shared/               # Shared plugins & hooks
-    ├── blocked_commands.json
-    └── plugins/           # Slash commands + agents
-        ├── ralph-wiggum/
-        ├── pr-review-toolkit/
-        ├── feature-dev/
-        └── frontend-design/
+![AnyAnomaly UI Mockup](https://via.placeholder.com/800x450?text=AnyAnomaly+Interface)
+
+## ✨ Features
+
+- **Natural Language Detection**: Detect arbitrary anomalies using open-ended text prompts.
+- **Multimodal Understanding**: built on MiniCPM-V 2.6 for strong OCR and action recognition.
+- **Visual Storyline**: Extracts and displays keyframes relevant to your query.
+- **Precise Timeline**: Interactive graph showing anomaly scores over time.
+- **YouTube Support**: Analyze videos directly from YouTube URLs.
+- **Edge Optimized**: Configurable for running on consumer hardware (Mac M-series, consumer GPUs) via int4 quantization.
+
+## 🛠️ Tech Stack
+
+- **Backend**: Python, Flask, PyTorch, Transformers, CLIP, OpenCV.
+- **Frontend**: React, Vite, Tailwind CSS v4, Recharts.
+- **AI Core**: MiniCPM-V 2.6 (AutoGPTQ/BitsAndBytes support planned).
+
+## 🚀 Prerequisites
+
+- **Python 3.10+**
+- **Node.js 18+**
+- **uv** (recommended for Python package management)
+- **Hugging Face Account**: You need an Access Token with permission to access gated models (like MiniCPM-V).
+- **FFmpeg**: Required for video processing (usually installed via system package manager).
+
+## 📦 Installation
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/yourusername/AnyAnomaly.git
+cd AnyAnomaly
 ```
 
-## Quick Start
-
-### For Gemini / Antigravity
-```
-Read GEMINI.md. Act as the Orchestrator. Build a [feature].
-```
-
-### For Claude Code
-```
-Read CLAUDE.md. Act as the Orchestrator. Build a [feature].
-```
-
-### Autonomous Mode (Ralph Wiggum Technique)
-```
-/iteration-loop
-"Implement [feature] until all tests pass"
-```
-
-## Workflow
-
-```mermaid
-flowchart TD
-    subgraph Planning
-        A[📋 Orchestrator] --> B[🧠 Planner]
-        B --> C["specs/ + design/"]
-    end
-
-    subgraph Execution
-        A --> D[💻 Coder]
-        D --> E[📝 Code Changes]
-    end
-
-    subgraph Verification
-        E --> F[🔍 Reviewer]
-        E --> G[🧪 Tester]
-        F --> H{Pass?}
-        G --> H
-    end
-
-    subgraph Completion
-        H -->|Yes| I[📖 Tech Writer]
-        H -->|No| D
-        I --> J[✅ Done]
-    end
-
-    subgraph Autonomous Loop
-        K[Execute Task] --> L[Verify]
-        L -->|Fail| M[Log + Retry]
-        M --> K
-        L -->|Pass| N[Checkpoint Commit]
-        N --> O{More Tasks?}
-        O -->|Yes| K
-        O -->|No| J
-    end
-```
-
-1. **Orchestrator** reads the index file (`GEMINI.md` or `CLAUDE.md`)
-2. **Orchestrator** calls **Planner** → outputs `specs/` and `design/`
-3. **Orchestrator** assigns tasks to **Coders**
-4. **Orchestrator** calls **Reviewer** + **Tester** to verify
-5. **Orchestrator** calls **Tech Writer** to update docs
-
-### Autonomous Iteration Loop
-For overnight/unattended sessions:
-1. **Execute** current task from plan
-2. **Verify** via tests, lint, build
-3. **On Failure**: Log, adjust, retry (up to MAX_ITERATIONS)
-4. **On Success**: Checkpoint commit, proceed to next task
-
-## Key Files
-| File | Purpose |
-|------|---------|
-| `GEMINI.md` | Agent registry for Gemini |
-| `CLAUDE.md` | Agent registry for Claude |
-| `.agents/SCRATCHPAD.md` | Live state + iteration tracking |
-| `.agents/workflows/iteration-loop.md` | Autonomous loop workflow |
-
-## Security Hooks (Claude Code & Gemini CLI)
-
-Pre-execution hooks that block dangerous system commands for **both** Claude Code and Gemini CLI.
-
-| File | Purpose |
-|------|---------|
-| `.shared/blocked_commands.json` | Single source of truth for all blocking rules |
-| `.claude/settings.local.json` | Claude Code `PreToolUse` hook config |
-| `.gemini/settings.json` | Gemini CLI `BeforeTool` hook config |
-
-**Setup:** See [.claude/HOOK_SETUP.md](.claude/HOOK_SETUP.md)
-
-**Blocks:** `rm -rf /`, `sudo rm/chmod/dd`, `curl|bash`, `git push --force`, deleting `.env`/`.git/`, etc.
-
-## Shared Plugins & Skills
-
-Plugins and skills are shared between Claude Code and Gemini CLI via `.shared/`.
-
-### Plugins (Commands + Agents)
-
-Plugins provide slash commands (`/command`) and specialized agents. Trigger with `/`:
-
-| Plugin | Command | Description |
-|--------|---------|-------------|
-| **ralph-wiggum** | `/ralph-loop` | Iterative development loops (Ralph Wiggum technique) |
-| **pr-review-toolkit** | `/review-pr` | Comprehensive PR review with 6 specialized agents |
-| **feature-dev** | `/feature-dev` | Guided feature development workflow |
-
-#### PR Review Toolkit Agents
-```
-/review-pr              # Full review
-/review-pr tests errors # Specific aspects
-```
-- `code-reviewer` - Project guidelines compliance
-- `code-simplifier` - Code clarity and maintainability
-- `comment-analyzer` - Comment accuracy
-- `pr-test-analyzer` - Test coverage quality
-- `silent-failure-hunter` - Hidden error detection
-- `type-design-analyzer` - Type encapsulation
-
-#### Feature Dev Agents
-```
-/feature-dev Build a REST API
-```
-- `code-architect` - Design architectures
-- `code-explorer` - Analyze existing code
-- `code-reviewer` - Quality review
-
-### Skills (Workflow + Knowledge)
-
-Skills are invoked by agents for structured workflows. Based on [obra/superpowers](https://github.com/obra/superpowers).
-
-| Skill | Purpose | Iron Law |
-|-------|---------|----------|
-| **brainstorming** | Socratic design refinement | One question at a time |
-| **writing-plans** | Bite-sized task plans | 2-5 min per step |
-| **executing-plans** | Batch execution with checkpoints | Stop when blocked |
-| **test-driven-development** | RED-GREEN-REFACTOR cycle | No code without failing test |
-| **systematic-debugging** | 4-phase root cause analysis | No fixes without investigation |
-| **requesting-code-review** | Two-stage review process | Review early, review often |
-| **frontend-design** | Distinctive UI/UX guidelines | - |
-| **explaining-code** | Code explanations with diagrams | - |
-
-> **Note:** Skills are maintained separately for each agent platform:
-> - **Gemini/Antigravity**: `.gemini/skills/`  
-> - **Claude Code**: `.claude/skills/`
-> 
-> This allows each agent to have optimized skill instructions for their specific capabilities.
-
-**Skill Invocation Pattern:**
-```
-1. Check .gemini/skills/SKILL_INDEX.md (Gemini) or .claude/skills/SKILL_INDEX.md (Claude)
-2. Announce: "I'm using the [skill] skill to [purpose]."
-3. Follow skill instructions exactly
-```
-
-### Antigravity Skills Setup
-
-To enable skills in [Google Antigravity](https://antigravity.google/docs/skills), copy skills to your project:
+### 2. Backend Setup
+We use `uv` for fast and reliable package management.
 
 ```bash
-# Copy skills to your project's .gemini/skills/ directory
-cp -R /path/to/Coding_Agent/.gemini/skills /your/project/.gemini/skills
+cd backend
+
+# Create virtual environment
+uv venv
+
+# Activate virtual environment
+source .venv/bin/activate
+
+# Install dependencies
+uv pip install -r requirements.txt
 ```
 
-Each skill folder contains a `SKILL.md` with YAML frontmatter:
-```yaml
----
-name: skill-name
-description: "When to use this skill..."
----
-# Skill instructions in markdown
-```
+> **Note**: If you are on an Apple Silicon Mac, ensure you are using a Python version compatible with MPS (Metal Performance Shaders) for GPU acceleration.
 
-See [Antigravity Skills Documentation](https://antigravity.google/docs/skills) for more details.
+### 3. Frontend Setup
 
-### Directory Structure
-```
-.gemini/skills/              # Gemini-specific skills
-├── SKILL_INDEX.md
-├── brainstorming/
-├── writing-plans/
-└── ...
-
-.claude/skills/              # Claude-specific skills
-├── SKILL_INDEX.md
-├── brainstorming/
-├── writing-plans/
-└── ...
-
-.shared/plugins/             # Shared plugins (commands + agents)
-├── ralph-wiggum/
-├── pr-review-toolkit/
-├── feature-dev/
-└── frontend-design/
-```
-
-**Add a skill:**
 ```bash
-# For Gemini
-mkdir .gemini/skills/my-skill
-# Create SKILL.md with frontmatter (name, description) + instructions
+cd ../frontend
 
-# For Claude
-mkdir .claude/skills/my-skill
-# Create SKILL.md with the same format
+# Install dependencies
+npm install
 ```
 
-## References
+## 🏃‍♂️ Usage
 
-- **Superpowers Skills**: [obra/superpowers](https://github.com/obra/superpowers) - Claude Code superpowers: core skills library
-- **Ralph Wiggum Technique**: [Autonomous iteration loop for AI agents](https://www.reddit.com/r/ClaudeAI/comments/1i1vz5h/claude_will_code_for_you_while_you_sleep_if_you/) - Reddit post by u/ProfessionalFar5209
-- **PR Review Toolkit**: Inspired by [Harper Carroll's PR Review agents](https://github.com/g0t4/prompt-engineers-only/tree/main) - Prompt Engineers Only
-- **Multi-Agent Orchestration**: [Anthropic's agentic patterns](https://www.anthropic.com/engineering/building-effective-agents) - Building Effective Agents
-- **KERNEL Prompt Framework**: [Prompt engineering best practices](https://www.reddit.com/r/ClaudeAI/comments/1i1k5xm/kernel_a_prompt_engineering_framework_based_on/) - Reddit post
-- **Claude Code Hooks**: [Official Claude Code hooks documentation](https://docs.anthropic.com/en/docs/claude-code/hooks)
-- **Gemini CLI**: [Google Gemini CLI documentation](https://github.com/google-gemini/gemini-cli)
-- **Skills for Claude Code**: [Official Claude Code skills documentation](https://docs.anthropic.com/en/docs/claude-code/skills)
+### Start the Backend
+The backend runs on port `5001`.
 
-## License
-MIT
+```bash
+# In backend/ directory
+source .venv/bin/activate
+export HF_TOKEN="your_hugging_face_token"  # Required for first run to download models
+python app.py
+```
+
+*The first run will download the MiniCPM-V model (~20GB or ~8GB if quantized). Ensure you have a stable internet connection.*
+
+### Start the Frontend
+The frontend runs on `http://localhost:5173`.
+
+```bash
+# In frontend/ directory
+npm run dev
+```
+
+### Analyze a Video
+1. Open `http://localhost:5173` in your browser.
+2. Upload a local video file OR paste a YouTube URL.
+3. Enter a text prompt (e.g., "person falling", "fire", "car crash").
+4. Click **Analyze**.
+5. View the score timeline and extracted keyframes.
+
+## 🔧 Configuration
+
+You can customize the backend behavior via environment variables or by modifying `config.py` (planned).
+
+- **`QUANTIZE_MODEL=true`**: (Upcoming) Force usage of 4-bit quantized model to save VRAM.
+- **`FRAME_INTERVAL=N`**: (Upcoming) Process every Nth frame to speed up analysis.
+
+## ⚠️ Troubleshooting
+
+- **Port 5000 in use**: We use port 5001 by default because MacOS AirPlay Receiver claims port 5000.
+- **403 Forbidden (Hugging Face)**: Ensure you have accepted the terms for `openbmb/MiniCPM-V-2_6` on the Hugging Face website and exported your `HF_TOKEN`.
+- **MPS Out of Memory**: If running on a Mac with <32GB RAM, try closing other applications or wait for the int4 quantization update.
+
+## 📜 License
+
+MIT License. See `LICENSE` for details.
