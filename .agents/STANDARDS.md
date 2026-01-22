@@ -8,8 +8,8 @@ Environment and tooling preferences for all agents.
 
 | Preference | Standard |
 |------------|----------|
-| **Package Manager** | `uv` |
-| **Virtual Environment** | Always create `.venv` in project root |
+| **Package Manager** | `uv` (Strictly enforced) |
+| **Virtual Environment** | **MANDATORY**: Always put `.venv` in root. **NEVER** install system-wide. |
 | **Dependency File** | `pyproject.toml` (uv native) |
 
 **Setup Commands:**
@@ -71,6 +71,16 @@ bun run dev
 |----------|-----------|
 | Python | `pytest` |
 | JS/TS | `vitest` or `jest` |
+
+---
+
+
+## 🏗️ Project Setup & Integration
+
+| Protocol | Rule |
+|----------|------|
+| **Agent Files** | When applying agent to a project, **ALWAYS** gitignore: `.agents/`, `.claude/`, `.gemini/`, `CLAUDE.md`, `GEMINI.md`. |
+| **Documentation** | `README.md` **MUST** illustrate the system architecture and flow (e.g., using Mermaid). |
 
 ---
 

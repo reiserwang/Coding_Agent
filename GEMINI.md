@@ -45,6 +45,7 @@
 2.  **Skills**: Check `.gemini/skills/SKILL_INDEX.md` before any task.
 3.  **Flow**: Orchestrator → Planner (brainstorming → writing-plans) → Coder (executing-plans + TDD) → Verify.
 4.  **Git**: DevOps owns branches/PRs. Check `task.md` for top-level tracking.
+5.  **Log and Elaborate**: Always log your thoughts and decisions summary in `.agents/NOTEPAD.md` as your and user's shared memory. Also note "what's next" in the NOTEPAD.md.
 
 ## 🎯 Skill Invocation Pattern
 1. **Check** `.gemini/skills/SKILL_INDEX.md` for relevant skills
