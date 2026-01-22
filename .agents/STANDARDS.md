@@ -72,6 +72,15 @@ bun run dev
 | Python | `pytest` |
 | JS/TS | `vitest` or `jest` |
 
+
+---
+
+## Documentation Style
+
+| Preference | Standard |
+|------------|----------|
+| **Visual Tone** | **Professional & Minimalist**. Avoid emojis unless strictly necessary for warnings, alerts, or critical emphasis. |
+
 ---
 
 
