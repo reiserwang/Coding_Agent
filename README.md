@@ -1,6 +1,10 @@
 # AI Agent Framework
 
+
 A modular, token-optimized agent architecture for AI-assisted software development.
+
+> ** Sample Initiation AI Instruction**: refer to [GEMINI.md](./GEMINI.md) (for Gemini) or [CLAUDE.md](./CLAUDE.md) (for Claude) to initialize your role and protocols. Especially, refer to [README.md](./README.md) for the project overview.
+
 
 ## Features
 - **Orchestrator Pattern**: Orchestrator delegates to specialized subagents
