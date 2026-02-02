@@ -26,15 +26,9 @@ from typing import Tuple, List, Dict
 # SHARED RULES LOADER
 # ============================================================================
 
-def get_project_root() -> Path:
-    """Find project root by looking for .shared directory."""
-    current = Path(__file__).resolve().parent
-    while current != current.parent:
-        if (current / ".shared" / "blocked_commands.json").exists():
-            return current
-        current = current.parent
-    # Fallback to script's parent (assumes .shared/ structure)
-    return Path(__file__).resolve().parent.parent
+def get_rules_path() -> Path:
+    """Get path to blocked_commands.json in the same directory."""
+    return Path(__file__).resolve().parent / "blocked_commands.json"
 
 
 def load_shared_rules() -> Tuple[List[str], List[str]]:
@@ -44,8 +38,8 @@ def load_shared_rules() -> Tuple[List[str], List[str]]:
     Returns:
         Tuple of (blocked_commands, dangerous_patterns)
     """
-    project_root = get_project_root()
-    rules_path = project_root / ".shared" / "blocked_commands.json"
+    """
+    rules_path = get_rules_path()
     
     if not rules_path.exists():
         print(f"Warning: Shared rules not found at {rules_path}", file=sys.stderr)

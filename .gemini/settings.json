@@ -6,7 +6,7 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "python3 .shared/dangerous_command_blocker.py"
+                        "command": "python3 agent/security/scripts/dangerous_command_blocker.py"
                     }
                 ]
             },
@@ -15,7 +15,7 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": "python3 .shared/dangerous_command_blocker.py"
+                        "command": "python3 agent/security/scripts/dangerous_command_blocker.py"
                     }
                 ]
             }
@@ -25,7 +25,7 @@
                 "hooks": [
                     {
                         "type": "command",
-                        "command": ".shared/plugins/ralph-wiggum/hooks/stop-hook.sh"
+                        "command": "agent/workflows/ralph_wiggum/hooks/stop-hook.sh"
                     }
                 ]
             }

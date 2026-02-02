@@ -12,6 +12,7 @@ Master index of all available skills. Check skills before any task.
 | [test-driven-development](./test-driven-development/SKILL.md) | ALL code changes | 🔴 First |
 | [systematic-debugging](./systematic-debugging/SKILL.md) | ANY technical issue or bug | 🔴 First |
 | [requesting-code-review](./requesting-code-review/SKILL.md) | After completing tasks, before merge | 🟠 Second |
+| [pr-integration](./pr-integration/SKILL.md) | Integrating Pull Requests | 🟠 Second |
 
 ## Domain Skills
 

@@ -4,14 +4,14 @@
 ## 🤖 Agent Registry
 | Role | Resp | Path |
 | :--- | :--- | :--- |
-| **Orchestrator** | **Orchestrator**. Start here. | `.agents/orchestrator/AGENT.md` |
-| **Planner** | **Thinking**. Specs, Arch, Plans. | `.agents/planner/AGENT.md` |
-| **Reviewer** | **Quality**. Sec, Perf, Refactor. | `.agents/code_reviewer/AGENT.md` |
-| **Tester** | **Verify**. Plans, Auto-tests. | `.agents/tester/AGENT.md` |
-| **DevOps** | **Ops**. Git, CI/CD, Docker. | `.agents/devops/AGENT.md` |
-| **Security** | **Sec**. SBOM, Threat Model. | `.agents/security/AGENT.md` |
-| **UI/UX** | **Design**. Styles, Palettes. | `.agents/ui_ux/AGENT.md` |
-| **Writer** | **Docs**. API, Guides. | `.agents/tech_writer/AGENT.md` |
+| **Orchestrator** | **Orchestrator**. Start here. | `agent/orchestrator/AGENT.md` |
+| **Planner** | **Thinking**. Specs, Arch, Plans. | `agent/planner/AGENT.md` |
+| **Reviewer** | **Quality**. Sec, Perf, Refactor. | `agent/code_reviewer/AGENT.md` |
+| **Tester** | **Verify**. Plans, Auto-tests. | `agent/tester/AGENT.md` |
+| **DevOps** | **Ops**. Git, CI/CD, Docker. | `agent/devops/AGENT.md` |
+| **Security** | **Sec**. SBOM, Threat Model. | `agent/security/AGENT.md` |
+| **UI/UX** | **Design**. Styles, Palettes. | `agent/ui_ux/AGENT.md` |
+| **Writer** | **Docs**. API, Guides. | `agent/tech_writer/AGENT.md` |
 
 ## 🛠️ Skills Registry
 | Skill | When to Use | Priority |
@@ -35,16 +35,16 @@
 | **Docs** | `docs/` | Writer |
 | **Tests** | `tests/` | Tester |
 | **Sec** | `security/` | Security |
-| **Standards** | `.agents/STANDARDS.md` | **ALL** |
-| **State** | `.agents/SCRATCHPAD.md` | **ALL** |
+| **Standards** | `agent/STANDARDS.md` | **ALL** |
+| **State** | `agent/SCRATCHPAD.md` | **ALL** |
 
 ## 🧠 Claude-Specific Protocol
 1.  **Subagent Pattern**: Use `Task` tool to spawn specialized agents. Pass Agent path as context.
     ```
-    Task: "Read .agents/planner/AGENT.md and act as the Planner. Create specs for [feature]."
+    Task: "Read agent/planner/AGENT.md and act as the Planner. Create specs for [feature]."
     ```
 2.  **Parallel Execution**: Use `Task` tool with `TodoWrite` to define non-blocking subtasks.
-3.  **State Sync**: Read/Write `.agents/SCRATCHPAD.md` before/after major steps.
+3.  **State Sync**: Read/Write `agent/SCRATCHPAD.md` before/after major steps.
 4.  **File Focus**: Claude Code works best with explicit file paths. Always specify paths.
 
 ## ⚡ Quick-Start

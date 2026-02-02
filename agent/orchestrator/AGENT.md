@@ -18,7 +18,7 @@ Orchestrate work by identifying the current SDLC stage, delegating to specialize
 -   **NEVER proceed with unclear requirements.** Ask user first.
 -   **ALWAYS identify the current SDLC stage** before delegating.
 -   **ALWAYS update SCRATCHPAD.md** before and after each phase.
--   **ALWAYS notify other agents** by adding entries to SCRATCHPAD.md Active Agents table.
+-   **ALWAYS notify other agents** by adding entries to agent/SCRATCHPAD.md Active Agents table.
 -   **ALWAYS check skills first.** See `.gemini/skills/` (Gemini) or `.claude/skills/` (Claude).
 -   **MAX 5 iterations** per task before escalating to user.
 

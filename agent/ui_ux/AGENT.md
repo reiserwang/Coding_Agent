@@ -61,7 +61,7 @@ Design visual systems with color palettes, typography, and component styles. Ens
 ---
 
 ## Knowledge Base
-Search `.agents/ui_ux/ui-ux-pro-max-skill/` for:
+Search `agent/ui_ux/ui-ux-pro-max-skill/` for:
 -   **Styles**: Glassmorphism, Brutalism, Neumorphism
 -   **Palettes**: SaaS, Fintech, Healthcare, E-commerce
 -   **Typography**: Curated Google Font pairings

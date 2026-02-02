@@ -3,7 +3,7 @@
 
 A modular, token-optimized agent architecture for AI-assisted software development.
 
-> ** Sample Initiation AI Instruction**: refer to [GEMINI.md](./GEMINI.md) (for Gemini) or [CLAUDE.md](./CLAUDE.md) (for Claude) to initialize your role and protocols. Especially, refer to [README.md](./README.md) for the project overview.
+> ** Sample Initiation AI Instruction**: refer to [agent/GEMINI.md](./agent/GEMINI.md) (for Gemini) or [agent/CLAUDE.md](./agent/CLAUDE.md) (for Claude) to initialize your role and protocols. Especially, refer to [README.md](./README.md) for the project overview.
 
 
 ## Features
@@ -13,25 +13,43 @@ A modular, token-optimized agent architecture for AI-assisted software developme
 - **Multi-Platform**: Supports Gemini/Antigravity and Claude Code
 - **Token Optimized**: Concise index files save context window
 
-## Structure
+## Architecture & Concepts
+ 
+ ### Agents vs. Skills
+ 
+ This framework distinguishes between **WHO** does the work (Agents) and **HOW** they do it (Skills).
+ 
+ | Concept | Definition | Example |
+ |---------|------------|---------|
+ | **Agent** | A persona or role with specific responsibilities, constraints, and scope. Agents heavily rely on system prompts to define their behavior. | **Coder**, **Planner**, **Reviewer** |
+ | **Skill** | A specific capability or procedure that an agent can invoke. Skills are tools or instruction sets used to accomplish a task. | **brainstorming**, **test-driven-development**, **git-commit** |
+ 
+ ### Directory Structure Rationale
+ 
+ - **`agent/`**: Contains the **Universal Logic**. This is the core definition of the agents (Orchestrator, Planner, etc.) and is platform-agnostic.
+ - **`.gemini/` & `.claude/`**: Contain the **Platform Adapters**. These directories hold the specific configurations, hooks, and optimized skill prompts required to run the universal agents on Gemini or Claude respectively.
+ 
+ ## Structure
 ```
 .
 ├── GEMINI.md              # Index for Gemini agents
 ├── CLAUDE.md              # Index for Claude Code agents
 ├── README.md              # This file
-├── .agents/               # Core agent definitions
+├── agent/                 # Core agent definitions
 │   ├── SCRATCHPAD.md      # Shared state (live blackboard)
 │   ├── STANDARDS.md       # Coding standards for all agents
 │   ├── workflows/         # Reusable agent workflows
 │   │   └── iteration-loop.md
+│   │   └── ralph_wiggum/      # Ralph Wiggum workflow tools
 │   ├── orchestrator/      # Orchestrator
 │   ├── planner/           # Specs + Architecture + Tasks
-│   ├── code_reviewer/     # Quality
+│   ├── code_reviewer/     # Quality (includes PR Review Toolkit)
 │   ├── tester/            # Verification
 │   ├── devops/            # Git + CI/CD + Checkpoints
 │   ├── security/          # SBOM + Threat Model
 │   ├── ui_ux/             # Design intelligence
-│   └── tech_writer/       # Documentation
+│   ├── tech_writer/       # Documentation
+│   └── feature_dev/       # Feature Development Team
 ├── .gemini/               # Gemini CLI configuration
 │   ├── settings.json
 │   ├── hooks/
@@ -48,25 +66,20 @@ A modular, token-optimized agent architecture for AI-assisted software developme
 │       ├── brainstorming/
 │       ├── writing-plans/
 │       └── ...
-└── .shared/               # Shared plugins & hooks
-    ├── blocked_commands.json
-    └── plugins/           # Slash commands + agents
-        ├── ralph-wiggum/
-        ├── pr-review-toolkit/
-        ├── feature-dev/
-        └── frontend-design/
+└── .shared/               # Shared hooks & config
+    └── blocked_commands.json
 ```
 
 ## Quick Start
 
 ### For Gemini / Antigravity
 ```
-Read GEMINI.md. Act as the Orchestrator. Build a [feature].
+Read agent/GEMINI.md. Act as the Orchestrator. Build a [feature].
 ```
 
 ### For Claude Code
 ```
-Read CLAUDE.md. Act as the Orchestrator. Build a [feature].
+Read agent/CLAUDE.md. Act as the Orchestrator. Build a [feature].
 ```
 
 ### Autonomous Mode (Ralph Wiggum Technique)
@@ -92,17 +105,29 @@ This will:
 2.  Install agents and shared resources to `~/.gemini/extensions/coding-agent`.
 3.  Automatically update the agent configurations to reference the global skill paths.
 
+### Global Integration (Claude)
+
+To install these agents and skills globally into your user configuration (`~/.claude/`), run the installation script:
+
+```bash
+./install_claude_global.sh
+```
+
+This will:
+1.  Install skills to `~/.claude/skills` (referencable by Claude).
+2.  Install agents to `~/.claude/extensions/coding-agent`.
+3.  Update `~/.claude/CLAUDE.md` to reference the installed protocol.
+
 ### 1. Copy Framework Files
 Copy the following directories and files to your project root. **DO NOT** copy the `.git` directory to avoid conflicts.
 
 ```bash
 # Assuming you are in your project root
-cp -R /path/to/Coding_Agent/.agents .
+cp -R /path/to/Coding_Agent/agent .
 cp -R /path/to/Coding_Agent/.gemini .
 cp -R /path/to/Coding_Agent/.claude .
 cp -R /path/to/Coding_Agent/.shared .
-cp /path/to/Coding_Agent/CLAUDE.md .
-cp /path/to/Coding_Agent/GEMINI.md .
+
 ```
 
 ### 2. Configure Git Ignore
@@ -110,12 +135,10 @@ Add the following to your project's `.gitignore`. This ensures the agent framewo
 
 ```text
 # Agent Framework (Local Overlay)
-.agents/
+agent/
 .gemini/
 .claude/
 .shared/
-CLAUDE.md
-GEMINI.md
 ```
 
 ### 3. Handle Documentation Conflicts
@@ -175,7 +198,7 @@ flowchart TD
     end
 ```
 
-1. **Orchestrator** reads the index file (`GEMINI.md` or `CLAUDE.md`)
+1. **Orchestrator** reads the index file (`agent/GEMINI.md` or `agent/CLAUDE.md`)
 2. **Orchestrator** calls **Planner** → outputs `specs/` and `design/`
 3. **Orchestrator** assigns tasks to **Coders**
 4. **Orchestrator** calls **Reviewer** + **Tester** to verify
@@ -191,10 +214,10 @@ For overnight/unattended sessions:
 ## Key Files
 | File | Purpose |
 |------|---------|
-| `GEMINI.md` | Agent registry for Gemini |
-| `CLAUDE.md` | Agent registry for Claude |
-| `.agents/SCRATCHPAD.md` | Live state + iteration tracking |
-| `.agents/workflows/iteration-loop.md` | Autonomous loop workflow |
+| `agent/GEMINI.md` | Agent registry for Gemini |
+| `agent/CLAUDE.md` | Agent registry for Claude |
+| `agent/SCRATCHPAD.md` | Live state + iteration tracking |
+| `agent/workflows/iteration-loop.md` | Autonomous loop workflow |
 
 ## Security Hooks (Claude Code & Gemini CLI)
 
@@ -209,40 +232,6 @@ Pre-execution hooks that block dangerous system commands for **both** Claude Cod
 **Setup:** See [.claude/HOOK_SETUP.md](.claude/HOOK_SETUP.md)
 
 **Blocks:** `rm -rf /`, `sudo rm/chmod/dd`, `curl|bash`, `git push --force`, deleting `.env`/`.git/`, etc.
-
-## Shared Plugins & Skills
-
-Plugins and skills are shared between Claude Code and Gemini CLI via `.shared/`.
-
-### Plugins (Commands + Agents)
-
-Plugins provide slash commands (`/command`) and specialized agents. Trigger with `/`:
-
-| Plugin | Command | Description |
-|--------|---------|-------------|
-| **ralph-wiggum** | `/ralph-loop` | Iterative development loops (Ralph Wiggum technique) |
-| **pr-review-toolkit** | `/review-pr` | Comprehensive PR review with 6 specialized agents |
-| **feature-dev** | `/feature-dev` | Guided feature development workflow |
-
-#### PR Review Toolkit Agents
-```
-/review-pr              # Full review
-/review-pr tests errors # Specific aspects
-```
-- `code-reviewer` - Project guidelines compliance
-- `code-simplifier` - Code clarity and maintainability
-- `comment-analyzer` - Comment accuracy
-- `pr-test-analyzer` - Test coverage quality
-- `silent-failure-hunter` - Hidden error detection
-- `type-design-analyzer` - Type encapsulation
-
-#### Feature Dev Agents
-```
-/feature-dev Build a REST API
-```
-- `code-architect` - Design architectures
-- `code-explorer` - Analyze existing code
-- `code-reviewer` - Quality review
 
 ### Skills (Workflow + Knowledge)
 
@@ -305,12 +294,6 @@ See [Antigravity Skills Documentation](https://antigravity.google/docs/skills) f
 ├── brainstorming/
 ├── writing-plans/
 └── ...
-
-.shared/plugins/             # Shared plugins (commands + agents)
-├── ralph-wiggum/
-├── pr-review-toolkit/
-├── feature-dev/
-└── frontend-design/
 ```
 
 **Add a skill:**

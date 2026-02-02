@@ -88,7 +88,7 @@ bun run dev
 
 | Protocol | Rule |
 |----------|------|
-| **Agent Files** | When applying agent to a project, **ALWAYS** gitignore: `.agents/`, `.claude/`, `.gemini/`, `CLAUDE.md`, `GEMINI.md`. |
+| **Agent Files** | When applying agent to a project, **ALWAYS** gitignore: `agent/`, `.claude/`, `.gemini/`. |
 | **Documentation** | `README.md` **MUST** illustrate the system architecture and flow (e.g., using Mermaid). |
 
 ---
@@ -100,7 +100,7 @@ bun run dev
 
 | Protocol | Location | Purpose |
 |----------|----------|---------|
-| **Autonomous Iteration Loop** | `orchestrator/AGENT.md` §196-220 | Enables "ship code while you sleep" sessions |
+| **Autonomous Iteration Loop** | `agent/orchestrator/AGENT.md` §196-220 | Enables "ship code while you sleep" sessions |
 | **Iteration Loop Workflow** | `workflows/iteration-loop.md` | Step-by-step autonomous execution guide |
 | **SCRATCHPAD Notification** | `SCRATCHPAD.md` | Agent-to-agent communication |
 

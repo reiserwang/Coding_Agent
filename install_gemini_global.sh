@@ -5,14 +5,48 @@ set -e
 GEMINI_DIR="$HOME/.gemini"
 GLOBAL_SKILLS_DIR="$GEMINI_DIR/antigravity/global_skills"
 EXTENSIONS_DIR="$GEMINI_DIR/extensions/coding-agent"
-AGENTS_DEST="$EXTENSIONS_DIR/agents"
-SHARED_DEST="$EXTENSIONS_DIR/shared"
+AGENT_DEST="$EXTENSIONS_DIR/agent" # Destination for agent definition files
 
 # Source Directories (relative to script location)
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 SKILLS_SRC="$SCRIPT_DIR/.gemini/skills"
-AGENTS_SRC="$SCRIPT_DIR/.agents"
-SHARED_SRC="$SCRIPT_DIR/.shared"
-GEMINI_MD_SRC="$SCRIPT_DIR/GEMINI.md"
+AGENT_SRC="$SCRIPT_DIR/agent"
 
-echo "==========================================
+echo "=========================================="
+echo "Installing coding-agent globally..."
+echo "=========================================="
+
+# 1. Install Skills
+if [ -d "$SKILLS_SRC" ]; then
+    echo "Installing skills from $SKILLS_SRC to $GLOBAL_SKILLS_DIR..."
+    mkdir -p "$GLOBAL_SKILLS_DIR"
+    cp -R "$SKILLS_SRC/"* "$GLOBAL_SKILLS_DIR/"
+else
+    echo "Warning: Skills directory $SKILLS_SRC not found."
+fi
+
+# 2. Install Agents
+if [ -d "$AGENT_SRC" ]; then
+    echo "Installing agents from $AGENT_SRC to $AGENT_DEST..."
+    mkdir -p "$EXTENSIONS_DIR"
+    rm -rf "$AGENT_DEST" # Clean previous install
+    cp -R "$AGENT_SRC" "$EXTENSIONS_DIR/"
+else
+     echo "Error: Agent directory $AGENT_SRC not found."
+     exit 1
+fi
+
+# 3. Setup Global GEMINI.md
+echo "Setting up global GEMINI.md..."
+# Copy the project's GEMINI.md as the base for the global one
+cp "$AGENT_SRC/GEMINI.md" "$GEMINI_DIR/GEMINI.md"
+
+# Add the requested pointer to the agent/GEMINI.md file
+# This assumes the user will be looking at this file and wants to know where the protocol details are relative to the installation
+echo "" >> "$GEMINI_DIR/GEMINI.md"
+echo "See [agent/GEMINI.md](agent/GEMINI.md) for the GEMINI Protocol." >> "$GEMINI_DIR/GEMINI.md"
+
+echo "=========================================="
+echo "Installation Complete!"
+echo "Global GEMINI.md updated at $GEMINI_DIR/GEMINI.md"
+echo "=========================================="

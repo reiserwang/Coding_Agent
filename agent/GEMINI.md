@@ -4,15 +4,15 @@
 ## 🤖 Agent Registry
 | Role | Resp | Path |
 | :--- | :--- | :--- |
-| **Orchestrator** | **Orchestrator**. Start here. | [.agents/orchestrator/AGENT.md](.agents/orchestrator/AGENT.md) |
-| **Planner** | **Thinking**. Specs, Arch, Plans. | [.agents/planner/AGENT.md](.agents/planner/AGENT.md) |
+| **Orchestrator** | **Orchestrator**. Start here. | [agent/orchestrator/AGENT.md](agent/orchestrator/AGENT.md) |
+| **Planner** | **Thinking**. Specs, Arch, Plans. | [agent/planner/AGENT.md](agent/planner/AGENT.md) |
 | **Coder** | **Build**. Reviewer, Dev, Test. | *(Standard)* |
-| **Reviewer** | **Quality**. Sec, Perf, Refactor. | [.agents/code_reviewer/AGENT.md](.agents/code_reviewer/AGENT.md) |
-| **Tester** | **Verify**. Plans, Auto-tests. | [.agents/tester/AGENT.md](.agents/tester/AGENT.md) |
-| **DevOps** | **Ops**. Git, CI/CD, Docker. | [.agents/devops/AGENT.md](.agents/devops/AGENT.md) |
-| **Security** | **Sec**. SBOM, Threat Model. | [.agents/security/AGENT.md](.agents/security/AGENT.md) |
-| **UI/UX** | **Design**. Styles, Palettes. | [.agents/ui_ux/AGENT.md](.agents/ui_ux/AGENT.md) |
-| **Writer** | **Docs**. API, Guides. | [.agents/tech_writer/AGENT.md](.agents/tech_writer/AGENT.md) |
+| **Reviewer** | **Quality**. Sec, Perf, Refactor. | [agent/code_reviewer/AGENT.md](agent/code_reviewer/AGENT.md) |
+| **Tester** | **Verify**. Plans, Auto-tests. | [agent/tester/AGENT.md](agent/tester/AGENT.md) |
+| **DevOps** | **Ops**. Git, CI/CD, Docker. | [agent/devops/AGENT.md](agent/devops/AGENT.md) |
+| **Security** | **Sec**. SBOM, Threat Model. | [agent/security/AGENT.md](agent/security/AGENT.md) |
+| **UI/UX** | **Design**. Styles, Palettes. | [agent/ui_ux/AGENT.md](agent/ui_ux/AGENT.md) |
+| **Writer** | **Docs**. API, Guides. | [agent/tech_writer/AGENT.md](agent/tech_writer/AGENT.md) |
 
 ## 🛠️ Skills Registry
 | Skill | When to Use | Priority |
@@ -37,15 +37,15 @@
 | **Docs** | `docs/` | Writer |
 | **Tests** | `tests/` | Tester |
 | **Sec** | `security/` | Security |
-| **Standards** | [.agents/STANDARDS.md](.agents/STANDARDS.md) | **ALL** |
-| **State** | `.agents/SCRATCHPAD.md` | **ALL** |
+| **Standards** | [agent/STANDARDS.md](agent/STANDARDS.md) | **ALL** |
+| **State** | `agent/SCRATCHPAD.md` | **ALL** |
 
 ## 🧠 Shared Memory Protocol
-1.  **State**: Always read/write `.agents/SCRATCHPAD.md` for active context.
+1.  **State**: Always read/write `agent/SCRATCHPAD.md` for active context.
 2.  **Skills**: Check `.gemini/skills/SKILL_INDEX.md` before any task.
 3.  **Flow**: Orchestrator → Planner (brainstorming → writing-plans) → Coder (executing-plans + TDD) → Verify.
 4.  **Git**: DevOps owns branches/PRs. Check `task.md` for top-level tracking.
-5.  **Log and Elaborate**: Always log your thoughts and decisions summary in `.agents/NOTEPAD.md` as your and user's shared memory. Also note "what's next" in the NOTEPAD.md.
+5.  **Log and Elaborate**: Always log your thoughts and decisions summary in `agent/NOTEPAD.md` as your and user's shared memory. Also note "what's next" in the NOTEPAD.md.
 
 ## 🎯 Skill Invocation Pattern
 1. **Check** `.gemini/skills/SKILL_INDEX.md` for relevant skills
