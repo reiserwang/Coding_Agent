@@ -51,3 +51,15 @@
 1. **Check** `.gemini/skills/SKILL_INDEX.md` for relevant skills
 2. **Announce** "I'm using the [skill-name] skill to [purpose]."
 3. **Follow** skill instructions exactly
+
+## 🚀 Team Productivity Playbook (Gemini Edition)
+Adhere to the [Team Productivity Playbook](docs/playbook/TEAM_PRODUCTIVITY.md):
+
+1.  **Do More in Parallel**: spin up worktrees for isolated tasks (`agent/workflows/git-worktree.md`).
+2.  **Plan Mode**: ALWAYS start with the Planner agent for complex tasks. Write `implementation_plan.md`.
+3.  **Self-Correction**: If you fail or err, run `agile-retrospective` skill to log it in `agent/memory/LESSONS.md`.
+4.  **Reusable Skills**: Convert repetitive tasks into skills in `.gemini/skills/`. Use `techdebt` skill.
+5.  **End-to-End Ownership**: Don't stop at code change. Verify CI, logs, and deployment if possible.
+6.  **Reviewer Persona**: Be your own harsh critic. Challenge the plan before executing.
+7.  **Data & Analytics**: Use CLI tools and store analytics patterns.
+8.  **Learning**: Explain "Why" in your thought process (Thought Block).

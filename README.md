@@ -160,49 +160,73 @@ flowchart LR
 
 ---
 
-## Workflow
+## Software Development Flowchart
 
 ```mermaid
 flowchart TD
-    subgraph Planning
-        A[📋 Orchestrator] --> B[🧠 Planner]
-        B --> C["specs/ + design/"]
+    %% Roles
+    User([User])
+    Orch[Orchestrator]
+    Plan[Planner]
+    Code[Coder]
+    Review[Reviewer]
+    Test[Tester]
+
+    %% Main Flow
+    User -->|Request| Orch
+    Orch -->|Start Task| Plan
+
+    %% Planning Phase
+    subgraph Planning [Planning Phase]
+        Plan -->|Skill: brainstorming| Ideas[Brainstorming]
+        Ideas -->|Skill: writing-plans| Spec[implementation_plan.md]
+        Spec -->|User Approval| PlanDone{Approved?}
+        PlanDone -->|No| Ideas
     end
 
-    subgraph Execution
-        A --> D[💻 Coder]
-        D --> E[📝 Code Changes]
+    PlanDone -->|Yes| Orch -->|Assign| Code
+
+    %% Execution Phase
+    subgraph Execution [Execution Phase]
+        Code -->|Workflow: git-worktree| Worktree[Isolated Worktree]
+        Worktree -->|Skill: executing-plans| TDD[Skill: TDD]
+        TDD -->|Red: Write Test| Red[Failing Test]
+        Red -->|Green: Write Code| Green[Passing Test]
+        Green -->|Refactor| Refactor[Refactor Code]
+        Refactor -->|Skill: techdebt| Scan[Clean & Scan]
     end
 
-    subgraph Verification
-        E --> F[🔍 Reviewer]
-        E --> G[🧪 Tester]
-        F --> H{Pass?}
-        G --> H
+    Scan -->|Code Complete| Orch -->|Verify| Verify
+
+    %% Verification Phase
+    subgraph Verification [Verification Phase]
+        Verify[Verification] -->|Fail| Retro[Skill: agile-retrospective]
+        Retro -->|Update LESSONS.md| Plan
+        Verify -->|Pass| Debug[Skill: systematic-debugging] 
+        Debug -->|Skill: requesting-code-review| PR[Pull Request]
+        PR -->|Reviewer Check| Merge{Ready to Merge?}
+        Merge -->|No| Retro
     end
 
-    subgraph Completion
-        H -->|Yes| I[📖 Tech Writer]
-        H -->|No| D
-        I --> J[✅ Done]
-    end
-
-    subgraph Autonomous Loop
-        K[Execute Task] --> L[Verify]
-        L -->|Fail| M[Log + Retry]
-        M --> K
-        L -->|Pass| N[Checkpoint Commit]
-        N --> O{More Tasks?}
-        O -->|Yes| K
-        O -->|No| J
-    end
+    Merge -->|Yes| Deploy[Deploy / Merge]
 ```
 
-1. **Orchestrator** reads the index file (`agent/GEMINI.md` or `agent/CLAUDE.md`)
-2. **Orchestrator** calls **Planner** → outputs `specs/` and `design/`
-3. **Orchestrator** assigns tasks to **Coders**
-4. **Orchestrator** calls **Reviewer** + **Tester** to verify
-5. **Orchestrator** calls **Tech Writer** to update docs
+## 🚀 Team Productivity Playbook
+
+We follow the [Team Productivity Playbook](docs/playbook/TEAM_PRODUCTIVITY.md) to maximize efficiency.
+
+### Core Tenets
+1.  **Do More in Parallel**: Use `agent/workflows/git-worktree.md` to run multiple agents in isolated worktrees.
+2.  **Plan First**: Always start with a `Planner` and `implementation_plan.md`.
+3.  **Self-Correcting Memory**: Use `agile-retrospective` to log lessons in `agent/memory/LESSONS.md`.
+4.  **Skills Over Ad-Hoc**: Convert repetitive tasks to skills (e.g., `techdebt`).
+5.  **Autonomous Iteration**: Use the `iteration-loop` for unattended coding.
+
+### Key Tools
+-   **`/techdebt` Skill**: Scans for TODOs and duplicates (`.gemini/skills/techdebt`).
+-   **`/agile-retrospective` Skill**: Formalizes learning from failures.
+-   **`git-worktree` Workflow**: Manage parallel tasks without repo pollution.
+-   **`implementation_plan.md`**: The source of truth for execution.
 
 ### Autonomous Iteration Loop
 For overnight/unattended sessions:
@@ -247,6 +271,8 @@ Skills are invoked by agents for structured workflows. Based on [obra/superpower
 | **requesting-code-review** | Two-stage review process | Review early, review often |
 | **frontend-design** | Distinctive UI/UX guidelines | - |
 | **explaining-code** | Code explanations with diagrams | - |
+| **techdebt** | Scan for copy-paste, TODOs, and large files | - |
+| **agile-retrospective** | Analyze successes/failures, update memory | - |
 
 > **Note:** Skills are maintained separately for each agent platform:
 > - **Gemini/Antigravity**: `.gemini/skills/`  

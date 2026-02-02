@@ -13,6 +13,8 @@ Master index of all available skills. Check skills before any task.
 | [systematic-debugging](./systematic-debugging/SKILL.md) | ANY technical issue or bug | 🔴 First |
 | [requesting-code-review](./requesting-code-review/SKILL.md) | After completing tasks, before merge | 🟠 Second |
 | [pr-integration](./pr-integration/SKILL.md) | Integrating Pull Requests | 🟠 Second |
+| [techdebt](./techdebt/SKILL.md) | Identifying technical debt, maintenance | 🟢 Optional |
+| [agile-retrospective](./agile-retrospective/SKILL.md) | **LEARNING**. Reviewing tasks & errors. | 🔴 First (on failure) / 🟢 Optional (on success) |
 
 ## Domain Skills
 
