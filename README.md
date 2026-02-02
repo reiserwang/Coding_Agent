@@ -75,9 +75,22 @@ Read CLAUDE.md. Act as the Orchestrator. Build a [feature].
 "Implement [feature] until all tests pass"
 ```
 
-## 🚀 Applying to Your Project
+## Applying to Your Project
 
 To retrofit this framework into an existing project or use it in a new one:
+
+### Global Integration (Gemini)
+
+To install these agents and skills globally into your user configuration (`~/.gemini/`), run the installation script:
+
+```bash
+./install_gemini_global.sh
+```
+
+This will:
+1.  Install skills to `~/.gemini/antigravity/global_skills`.
+2.  Install agents and shared resources to `~/.gemini/extensions/coding-agent`.
+3.  Automatically update the agent configurations to reference the global skill paths.
 
 ### 1. Copy Framework Files
 Copy the following directories and files to your project root. **DO NOT** copy the `.git` directory to avoid conflicts.
