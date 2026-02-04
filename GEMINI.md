@@ -1,5 +1,10 @@
-# GEMINI Protocol
-**Root Index & Team Shared Memory**
+# GEMINI.md (Project Memory)
+
+## 🧠 Self-Learning Protocol
+**Core Rule**: After each correction, update this file so you don't make the same mistake again.
+"Update GEMINI.md so you don't make that mistake again."
+
+- **Refine and Prune**: Continuously refine and prune this file.
 
 ## 🤖 Agent Registry
 | Role | Resp | Path |

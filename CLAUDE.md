@@ -1,5 +1,10 @@
-# CLAUDE.md
-**Agent Protocol for Claude Code**
+# CLAUDE.md (Project Memory)
+
+## 🧠 Self-Learning Protocol
+**Core Rule**: After each correction, update this file so you don't make the same mistake again.
+"Update CLAUDE.md so you don't make that mistake again."
+
+- **Refine and Prune**: Continuously refine and prune this file.
 
 ## 🤖 Agent Registry
 | Role | Resp | Path |

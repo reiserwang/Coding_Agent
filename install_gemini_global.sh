@@ -38,13 +38,26 @@ fi
 
 # 3. Setup Global GEMINI.md
 echo "Setting up global GEMINI.md..."
-# Copy the project's GEMINI.md as the base for the global one
-cp "$AGENT_SRC/GEMINI.md" "$GEMINI_DIR/GEMINI.md"
+# Generate global memory file
+cat > "$GEMINI_DIR/GEMINI.md" <<EOF
+# GEMINI.md (Global Memory)
 
-# Add the requested pointer to the agent/GEMINI.md file
-# This assumes the user will be looking at this file and wants to know where the protocol details are relative to the installation
-echo "" >> "$GEMINI_DIR/GEMINI.md"
-echo "See [agent/GEMINI.md](agent/GEMINI.md) for the GEMINI Protocol." >> "$GEMINI_DIR/GEMINI.md"
+## 🧠 Self-Learning Protocol
+**Core Rule**: After each correction, update this file (or the project-specific GEMINI.md) so you don't make the same mistake again.
+"Update GEMINI.md so you don't make that mistake again."
+
+- **Refine and Prune**: Continuously refine and prune this file.
+- **Scope**: Keep global preferences here. Put project-specific rules in \`repo/GEMINI.md\`.
+
+## 🛠️ Global Preferences
+- **Personality**: Proactive, analytical, highly skilled engineer.
+- **Protocol**: Always read the project's \`GEMINI.md\` or \`README.md\` first to understand the context.
+
+## 🔥 Power Moves
+- **Reviewer**: "Grill me on these changes before PR", "Prove this works", "Diff main vs feature".
+- **Refactor**: "Knowing everything now, scrap this and implement the elegant solution."
+- **Specs**: "Write precise specs. More specificity leads to better output."
+EOF
 
 echo "=========================================="
 echo "Installation Complete!"

@@ -41,12 +41,26 @@ fi
 
 # 3. Setup Global CLAUDE.md
 echo "Setting up global CLAUDE.md..."
-# Copy the project's CLAUDE.md as the base for the global one
-cp "$AGENT_SRC/CLAUDE.md" "$CLAUDE_DIR/CLAUDE.md"
+# Generate global memory file
+cat > "$CLAUDE_DIR/CLAUDE.md" <<EOF
+# CLAUDE.md (Global Memory)
 
-# Add the requested pointer to the agent/CLAUDE.md file
-echo "" >> "$CLAUDE_DIR/CLAUDE.md"
-echo "See [agent/CLAUDE.md](agent/CLAUDE.md) for the CLAUDE Protocol." >> "$CLAUDE_DIR/CLAUDE.md"
+## 🧠 Self-Learning Protocol
+**Core Rule**: After each correction, update this file (or the project-specific CLAUDE.md) so you don't make the same mistake again.
+"Update CLAUDE.md so you don't make that mistake again."
+
+- **Refine and Prune**: Continuously refine and prune this file.
+- **Scope**: Keep global preferences here. Put project-specific rules in \`repo/CLAUDE.md\`.
+
+## 🛠️ Global Preferences
+- **Personality**: Helpful, concise, agentic.
+- **Protocol**: Always read the project's \`CLAUDE.md\` or \`README.md\` first to understand the context.
+
+## 🔥 Power Moves
+- **Reviewer**: "Grill me on these changes before PR", "Prove this works", "Diff main vs feature".
+- **Refactor**: "Knowing everything now, scrap this and implement the elegant solution."
+- **Specs**: "Write precise specs. More specificity leads to better output."
+EOF
 
 echo "=========================================="
 echo "Installation Complete!"

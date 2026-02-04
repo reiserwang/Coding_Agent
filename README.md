@@ -3,7 +3,7 @@
 
 A modular, token-optimized agent architecture for AI-assisted software development.
 
-> ** Sample Initiation AI Instruction**: refer to [agent/GEMINI.md](./agent/GEMINI.md) (for Gemini) or [agent/CLAUDE.md](./agent/CLAUDE.md) (for Claude) to initialize your role and protocols. Especially, refer to [README.md](./README.md) for the project overview.
+> ** Sample Initiation AI Instruction**: refer to [GEMINI.md](./GEMINI.md) (for Gemini) or [CLAUDE.md](./CLAUDE.md) (for Claude) to initialize your role and protocols. Especially, refer to [README.md](./README.md) for the project overview.
 
 
 ## Features
@@ -32,8 +32,8 @@ A modular, token-optimized agent architecture for AI-assisted software developme
  ## Structure
 ```
 .
-├── GEMINI.md              # Index for Gemini agents
-├── CLAUDE.md              # Index for Claude Code agents
+├── GEMINI.md              # Project-specific index for Gemini
+├── CLAUDE.md              # Project-specific index for Claude Code
 ├── README.md              # This file
 ├── agent/                 # Core agent definitions
 │   ├── SCRATCHPAD.md      # Shared state (live blackboard)
@@ -74,12 +74,12 @@ A modular, token-optimized agent architecture for AI-assisted software developme
 
 ### For Gemini / Antigravity
 ```
-Read agent/GEMINI.md. Act as the Orchestrator. Build a [feature].
+Read GEMINI.md. Act as the Orchestrator. Build a [feature].
 ```
 
 ### For Claude Code
 ```
-Read agent/CLAUDE.md. Act as the Orchestrator. Build a [feature].
+Read CLAUDE.md. Act as the Orchestrator. Build a [feature].
 ```
 
 ### Autonomous Mode (Ralph Wiggum Technique)
@@ -238,8 +238,8 @@ For overnight/unattended sessions:
 ## Key Files
 | File | Purpose |
 |------|---------|
-| `agent/GEMINI.md` | Agent registry for Gemini |
-| `agent/CLAUDE.md` | Agent registry for Claude |
+| `GEMINI.md` | Project registry for Gemini |
+| `CLAUDE.md` | Project registry for Claude |
 | `agent/SCRATCHPAD.md` | Live state + iteration tracking |
 | `agent/workflows/iteration-loop.md` | Autonomous loop workflow |
 
