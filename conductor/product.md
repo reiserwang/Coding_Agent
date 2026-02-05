@@ -19,7 +19,8 @@ A modular, token-optimized agent architecture for AI-assisted software developme
 - **Streamlined Onboarding:** Robust global installation and update scripts to facilitate quick setup and maintenance for new users.
 
 ## Architectural Principles
-- **Modular Orchestration:** The framework is built on a central Orchestrator that delegates specific, narrow-scoped tasks to specialized sub-agents. This ensures high precision and allows for easier scaling of agent capabilities.
+- **Conductor-Powered Orchestrator:** The framework utilizes a central Technical Lead (Orchestrator) that adopts the Conductor spec-driven methodology for complex features, while maintaining a "Hot Path" for rapid, small-scale tasks.
+- **Modular Orchestration:** Specialized sub-agents are delegated narrow-scoped tasks, ensuring high precision and scalability.
 
 ## Brand & Messaging
 - **Professional & Technical:** Focus on the robustness of the architecture and the efficiency of the implementation.

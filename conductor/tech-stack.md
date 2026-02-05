@@ -14,5 +14,6 @@
 - **Mermaid.js:** Used for generating architectural and workflow diagrams within Markdown documentation.
 
 ## Architectural Patterns
+- **Conductor Spec-Driven Methodology:** A formal SDLC framework using `spec.md` and `plan.md` to guide feature development and bug fixes.
 - **Modular Orchestrator Pattern:** The foundational architecture where a central controller manages specialized sub-agents.
 - **Adapter Pattern:** Used to translate universal agent logic into platform-specific configurations for Gemini and Claude.
