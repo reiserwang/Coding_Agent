@@ -1,6 +1,6 @@
 # Implementation Plan: Orchestrator-Conductor Integration & Rollout
 
-## Phase 1: Design Validation & Refinement
+## Phase 1: Design Validation & Refinement [checkpoint: c143189]
 - [x] Task: Conduct conflict analysis (Hotfix vs Track) (08c2b75)
     - [x] Analyze edge cases where a task might be too small for a track but too complex for a single message.
     - [x] Define clear criteria for "Hot Path" vs "Feature Path".
