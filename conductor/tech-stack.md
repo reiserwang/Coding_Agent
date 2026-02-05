@@ -2,7 +2,7 @@
 
 ## Core Technologies
 - **Shell (Bash):** Used for installation scripts (`install_gemini_global.sh`, `install_claude_global.sh`), workflow automation, and CLI tool interaction.
-- **Python:** Employed for specialized scripts, such as security blocking (`dangerous_command_blocker.py`) and UI/UX search utilities.
+- **Python:** Used for the Conductor CLI and track management logic (`agent/conductor/`).
 - **JavaScript / TypeScript:** Used for building CLI tools and managing dependencies (Node.js/npm ecosystem).
 
 ## AI Agent Platforms

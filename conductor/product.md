@@ -14,6 +14,7 @@ A modular, token-optimized agent architecture for AI-assisted software developme
 
 ## Key Features
 - **Enhanced Autonomous Logic:** Prioritizing the refinement of iteration loops with advanced error recovery and state management.
+- **Robust Track Management:** Automated track creation, registry synchronization, and status tracking to streamline the spec-driven development lifecycle.
 - **Specialized Sub-Agent Ecosystem:** A comprehensive suite of agents including Security (SBOM/Threat Modeling), UI/UX (Design Intelligence), and Tech Writer (API/Documentation).
 - **Streamlined Onboarding:** Robust global installation and update scripts to facilitate quick setup and maintenance for new users.
 
