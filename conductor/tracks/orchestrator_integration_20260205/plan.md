@@ -6,8 +6,8 @@
     - [x] Define clear criteria for "Hot Path" vs "Feature Path".
 - [x] Task: Refine Option 1 integration mechanics (8d47061)
     - [x] Detail how the Orchestrator should handle the state of a track in `SCRATCHPAD.md`.
-- [ ] Task: Update `design/orchestrator-conductor-integration.md`
-    - [ ] Incorporate analysis results into the design document.
+- [x] Task: Update `design/orchestrator-conductor-integration.md` (08c2b75)
+    - [x] Incorporate analysis results into the design document.
 - [ ] Task: Conductor - User Manual Verification 'Design Validation & Refinement' (Protocol in workflow.md)
 
 ## Phase 2: Core System Updates
