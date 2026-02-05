@@ -1,13 +1,13 @@
 # Implementation Plan - Conductor Track Management System
 
-## Phase 1: CLI and Configuration
-- [ ] Task: Initialize CLI entry point for Conductor.
+## Phase 1: CLI and Configuration [checkpoint: 111caba]
+- [x] Task: Initialize CLI entry point for Conductor. 20ed4f9
     - [ ] Write Tests: Create tests for CLI entry point existence and basic argument handling.
     - [ ] Implement Feature: Create the main CLI entry point script.
-- [ ] Task: Implement configuration loading.
+- [x] Task: Implement configuration loading. f4d1ac2
     - [ ] Write Tests: Create tests for loading 'setup_state.json' and 'metadata.json'.
     - [ ] Implement Feature: Implement the configuration loader module.
-- [ ] Task: Conductor - User Manual Verification 'CLI and Configuration' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'CLI and Configuration' (Protocol in workflow.md)
 
 ## Phase 2: Track Creation Logic
 - [ ] Task: Implement 'newTrack' command argument parsing.
