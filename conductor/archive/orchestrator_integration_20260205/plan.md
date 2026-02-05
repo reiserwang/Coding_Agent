@@ -20,7 +20,7 @@
     - [x] Update `CLAUDE.md` to align with the new Orchestrator protocols.
 - [x] Task: Conductor - User Manual Verification 'Core System Updates' (Protocol in workflow.md) (3c9cb9c)
 
-## Phase 3: Documentation & Finalization
+## Phase 3: Documentation & Finalization [checkpoint: b242487]
 - [x] Task: Update Project README (6b6264a)
     - [x] Update `README.md` with the unified Orchestrator-Conductor workflow overview.
 - [x] Task: Review `agent/STANDARDS.md` (b0c0df4)
