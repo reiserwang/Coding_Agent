@@ -42,3 +42,22 @@ def create_track_artifacts(description):
         f.write(f"# Implementation Plan - {description}\n\n## Phase 1\n- [ ] Task: [TBD]\n")
         
     return track_id
+
+def update_track_status(track_id, new_status):
+    """Update the status and updated_at timestamp in metadata.json."""
+    metadata_path = os.path.join("conductor", "tracks", track_id, "metadata.json")
+    if not os.path.exists(metadata_path):
+        return False
+        
+    try:
+        with open(metadata_path, "r") as f:
+            metadata = json.load(f)
+            
+        metadata["status"] = new_status
+        metadata["updated_at"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        
+        with open(metadata_path, "w") as f:
+            json.dump(metadata, f, indent=2)
+        return True
+    except (json.JSONDecodeError, IOError):
+        return False
