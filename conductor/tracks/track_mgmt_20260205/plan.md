@@ -9,17 +9,17 @@
     - [ ] Implement Feature: Implement the configuration loader module.
 - [x] Task: Conductor - User Manual Verification 'CLI and Configuration' (Protocol in workflow.md)
 
-## Phase 2: Track Creation Logic
-- [ ] Task: Implement 'newTrack' command argument parsing.
+## Phase 2: Track Creation Logic [checkpoint: b433a70]
+- [x] Task: Implement 'newTrack' command argument parsing. 5dd170b
     - [ ] Write Tests: Create tests for parsing arguments for the 'newTrack' command.
     - [ ] Implement Feature: Implement the argument parser for 'newTrack'.
-- [ ] Task: Implement directory creation and metadata generation.
+- [x] Task: Implement directory creation and metadata generation. 2cd3e0d
     - [ ] Write Tests: Create tests to verify directory creation and 'metadata.json' content generation.
     - [ ] Implement Feature: Implement the logic to create track directories and 'metadata.json'.
-- [ ] Task: Implement spec and plan generation.
+- [x] Task: Implement spec and plan generation. 4533249
     - [ ] Write Tests: Create tests for generating 'spec.md' and 'plan.md' from templates.
     - [ ] Implement Feature: Implement the templating engine for 'spec.md' and 'plan.md'.
-- [ ] Task: Conductor - User Manual Verification 'Track Creation Logic' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Track Creation Logic' (Protocol in workflow.md)
 
 ## Phase 3: Track Registry & Status Management
 - [ ] Task: Implement registry updater.
