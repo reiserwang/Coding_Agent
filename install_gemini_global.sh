@@ -21,6 +21,7 @@ if [ -d "$SKILLS_SRC" ]; then
     echo "Installing skills from $SKILLS_SRC to $GLOBAL_SKILLS_DIR..."
     mkdir -p "$GLOBAL_SKILLS_DIR"
     cp -R "$SKILLS_SRC/"* "$GLOBAL_SKILLS_DIR/"
+    echo "Installed $(ls "$SKILLS_SRC" | wc -l | xargs) skills."
 else
     echo "Warning: Skills directory $SKILLS_SRC not found."
 fi

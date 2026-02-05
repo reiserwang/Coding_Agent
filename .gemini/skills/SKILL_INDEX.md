@@ -15,6 +15,7 @@ Master index of all available skills. Check skills before any task.
 | [pr-integration](./pr-integration/SKILL.md) | Integrating Pull Requests | 🟠 Second |
 | [techdebt](./techdebt/SKILL.md) | Identifying technical debt, maintenance | 🟢 Optional |
 | [agile-retrospective](./agile-retrospective/SKILL.md) | **LEARNING**. Reviewing tasks & errors. | 🔴 First (on failure) / 🟢 Optional (on success) |
+| [conductor](./conductor/SKILL.md) | Project orchestration, feature planning & implementation. | 🔴 First (for new tracks) |
 
 ## Domain Skills
 

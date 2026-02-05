@@ -1,0 +1,8 @@
+{
+  "track_id": "orchestrator_integration_20260205",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-02-05T15:00:00Z",
+  "updated_at": "2026-02-05T15:00:00Z",
+  "description": "Review the design and make the process coherent, e.g. the conflicts between orchestrator and conductor."
+}

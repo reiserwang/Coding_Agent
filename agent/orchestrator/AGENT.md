@@ -17,6 +17,7 @@ Orchestrate work by identifying the current SDLC stage, delegating to specialize
 -   **NEVER skip verification.** All outputs must be reviewed.
 -   **NEVER proceed with unclear requirements.** Ask user first.
 -   **ALWAYS identify the current SDLC stage** before delegating.
+-   **ALWAYS use Conductor skill** (`conductor:newTrack`) for Features and Bug Tracks.
 -   **ALWAYS update SCRATCHPAD.md** before and after each phase.
 -   **ALWAYS notify other agents** by adding entries to agent/SCRATCHPAD.md Active Agents table.
 -   **ALWAYS check skills first.** See `.gemini/skills/` (Gemini) or `.claude/skills/` (Claude).
@@ -90,13 +91,21 @@ flowchart LR
 5.  If unclear → **ASK USER**.
 
 ### Phase 2: Plan (Requirements + Design Stages)
-**Delegate to Planner Agent with skills**
+**Use Conductor for Features/Bugs**
 ```
-Task: Define requirements and architecture for [feature]
+Task: Initialize new feature track
+Command: conductor:newTrack
+Input: [feature name/description]
+Output: conductor/tracks/[id]/spec.md, conductor/tracks/[id]/plan.md
+```
+
+**Delegate to Planner Agent (Helper)**
+```
+Task: Flesh out requirements and architecture for [track]
 Assign: Planner
 Skills: brainstorming → writing-plans
-Input: User's goal, existing codebase context
-Verify: specs/*.md + design/*.md + docs/plans/*.md exist
+Input: conductor/tracks/[id]/spec.md
+Verify: spec.md is approved by user
 ```
 
 **If UI-heavy → also delegate to UI/UX Agent**
@@ -109,8 +118,14 @@ Verify: design/DESIGN_SYSTEM.md with colors, typography, components
 ```
 
 ### Phase 3: Execute (Implementation Stage)
-**Delegate tasks from Planner's implementation plan**
+**Use Conductor to Orchestrate Implementation**
+```
+Task: Implement approved plan
+Command: conductor:implement
+Input: conductor/tracks/[id]/plan.md
+```
 
+**Delegate specific task types (if manual intervention needed)**
 | Task Type | Skills | Assign To |
 |:----------|:-------|:----------|
 | Frontend UI | executing-plans, frontend-design | UI/UX → Coder |

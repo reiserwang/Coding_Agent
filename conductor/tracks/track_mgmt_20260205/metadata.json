@@ -1,8 +1,0 @@
-{
-  "track_id": "track_mgmt_20260205",
-  "type": "feature",
-  "status": "new",
-  "created_at": "2026-02-05T00:00:00Z",
-  "updated_at": "2026-02-05T00:00:00Z",
-  "description": "Implement a robust track management system for the Conductor extension to handle track creation and status updates."
-}
