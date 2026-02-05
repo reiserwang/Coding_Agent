@@ -8,14 +8,24 @@ A modular, token-optimized agent architecture for AI-assisted software developme
 
 ## Features
 - **Orchestrator Pattern**: Orchestrator delegates to specialized subagents
+- **Conductor Integration**: Spec-driven development using the Conductor methodology for complex features
 - **Shared State**: Central `SCRATCHPAD.md` for multi-agent coordination
 - **Autonomous Iteration**: Ralph Wiggum technique for "ship code while you sleep"
 - **Multi-Platform**: Supports Gemini/Antigravity and Claude Code
 - **Token Optimized**: Concise index files save context window
 
 ## Architecture & Concepts
- 
- ### Agents vs. Skills
+
+### The "Conductor-Powered" Orchestrator
+The Orchestrator agent acts as the **Technical Lead**. It adopts the Conductor skill as its primary operating system for Feature and Bug tracks.
+
+- **Hot Path**: Small, low-risk fixes (typos, simple documentation) are delegated directly to sub-agents.
+- **Feature Path**: Complex tasks use `conductor:newTrack`. This triggers a formal spec-driven lifecycle:
+    1. **Spec Phase**: Planner creates `spec.md` with user sign-off.
+    2. **Plan Phase**: Planner creates `plan.md` (TDD-first tasks).
+    3. **Implementation Phase**: Coder executes the plan with automated checkpoints.
+
+### Agents vs. Skills
  
  This framework distinguishes between **WHO** does the work (Agents) and **HOW** they do it (Skills).
  
@@ -172,19 +182,28 @@ flowchart TD
     Review[Reviewer]
     Test[Tester]
 
-    %% Main Flow
+    %% Path Selection
     User -->|Request| Orch
-    Orch -->|Start Task| Plan
-
+    Orch -->|Select Path| Path{Path?}
+    
+    %% Hot Path
+    Path -->|Hot Path| Hot[Direct Delegation]
+    Hot -->|Assign| Code
+    
+    %% Feature Path (Conductor)
+    Path -->|Feature Path| Cond[conductor:newTrack]
+    Cond --> Planning
+    
     %% Planning Phase
-    subgraph Planning [Planning Phase]
+    subgraph Planning [Planning Phase (Conductor)]
         Plan -->|Skill: brainstorming| Ideas[Brainstorming]
-        Ideas -->|Skill: writing-plans| Spec[implementation_plan.md]
+        Ideas -->|Skill: writing-plans| Spec[spec.md]
         Spec -->|User Approval| PlanDone{Approved?}
         PlanDone -->|No| Ideas
+        PlanDone -->|Yes| P[plan.md]
     end
 
-    PlanDone -->|Yes| Orch -->|Assign| Code
+    P --> Orch -->|conductor:implement| Execution
 
     %% Execution Phase
     subgraph Execution [Execution Phase]
@@ -196,7 +215,7 @@ flowchart TD
         Refactor -->|Skill: techdebt| Scan[Clean & Scan]
     end
 
-    Scan -->|Code Complete| Orch -->|Verify| Verify
+    Scan -->|Code Complete| Verify
 
     %% Verification Phase
     subgraph Verification [Verification Phase]
