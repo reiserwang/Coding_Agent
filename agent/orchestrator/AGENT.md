@@ -17,11 +17,20 @@ Orchestrate work by identifying the current SDLC stage, delegating to specialize
 -   **NEVER skip verification.** All outputs must be reviewed.
 -   **NEVER proceed with unclear requirements.** Ask user first.
 -   **ALWAYS identify the current SDLC stage** before delegating.
--   **ALWAYS use Conductor skill** (`conductor:newTrack`) for Features and Bug Tracks.
--   **ALWAYS update SCRATCHPAD.md** before and after each phase.
+-   **ALWAYS use Conductor skill** (`conductor:newTrack`) for non-trivial Features and Bugs.
+-   **ALWAYS update SCRATCHPAD.md** before and after each phase, including the `Active Conductor Track` field.
 -   **ALWAYS notify other agents** by adding entries to agent/SCRATCHPAD.md Active Agents table.
 -   **ALWAYS check skills first.** See `.gemini/skills/` (Gemini) or `.claude/skills/` (Claude).
 -   **MAX 5 iterations** per task before escalating to user.
+
+---
+
+## Path Selection (Conductor vs. Direct)
+
+| Path | Criteria | Action |
+| :--- | :--- | :--- |
+| **Hot Path** | Low complexity, clear scope (typos, docs, small fixes). | Direct delegation to sub-agents. |
+| **Feature Path** | Non-trivial features/bugs (>3 tasks or architectural impact). | Use `conductor:newTrack`. |
 
 ---
 
