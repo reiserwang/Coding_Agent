@@ -20,6 +20,7 @@ All criteria must pass for task completion:
 - [ ] [Add task-specific criteria]
 
 ## 🔑 Key Decisions & Context
+-   **Active Conductor Track**: [Track ID / Path or None]
 -   *Add key architectural decisions here*
 -   *Add discovered constraints here*
 
