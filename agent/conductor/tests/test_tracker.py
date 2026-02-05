@@ -30,3 +30,23 @@ def test_create_track_artifacts(tmp_path):
         assert metadata["description"] == description
         assert metadata["status"] == "new"
         assert "created_at" in metadata
+
+def test_create_track_artifacts_with_docs(tmp_path):
+    """Test that spec.md and plan.md are created (mocked content)."""
+    os.chdir(tmp_path)
+    os.mkdir("conductor")
+    os.mkdir("conductor/tracks")
+    
+    description = "Test Track with Docs"
+    track_id = create_track_artifacts(description)
+    
+    track_dir = tmp_path / "conductor" / "tracks" / track_id
+    spec_file = track_dir / "spec.md"
+    plan_file = track_dir / "plan.md"
+    
+    # These should exist once we implement the logic
+    assert spec_file.exists()
+    assert plan_file.exists()
+    
+    assert "# Specification: Test Track with Docs" in spec_file.read_text()
+    assert "# Implementation Plan - Test Track with Docs" in plan_file.read_text()

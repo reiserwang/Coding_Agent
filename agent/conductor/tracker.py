@@ -33,4 +33,12 @@ def create_track_artifacts(description):
     with open(metadata_path, "w") as f:
         json.dump(metadata, f, indent=2)
         
+    spec_path = os.path.join(track_dir, "spec.md")
+    with open(spec_path, "w") as f:
+        f.write(f"# Specification: {description}\n\n## Overview\n[TBD]\n")
+        
+    plan_path = os.path.join(track_dir, "plan.md")
+    with open(plan_path, "w") as f:
+        f.write(f"# Implementation Plan - {description}\n\n## Phase 1\n- [ ] Task: [TBD]\n")
+        
     return track_id
