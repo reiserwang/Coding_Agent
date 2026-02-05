@@ -21,11 +21,11 @@
     - [ ] Implement Feature: Implement the templating engine for 'spec.md' and 'plan.md'.
 - [x] Task: Conductor - User Manual Verification 'Track Creation Logic' (Protocol in workflow.md)
 
-## Phase 3: Track Registry & Status Management
-- [ ] Task: Implement registry updater.
+## Phase 3: Track Registry & Status Management [checkpoint: cae0777]
+- [x] Task: Implement registry updater. 857e234
     - [ ] Write Tests: Create tests for appending new tracks to 'conductor/tracks.md'.
     - [ ] Implement Feature: Implement the registry update logic.
-- [ ] Task: Implement status update command.
+- [x] Task: Implement status update command. 857e234
     - [ ] Write Tests: Create tests for the status update command and metadata modification.
     - [ ] Implement Feature: Implement the status update command.
-- [ ] Task: Conductor - User Manual Verification 'Track Registry & Status Management' (Protocol in workflow.md)
+- [x] Task: Conductor - User Manual Verification 'Track Registry & Status Management' (Protocol in workflow.md)
