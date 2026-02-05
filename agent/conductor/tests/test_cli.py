@@ -29,3 +29,9 @@ def test_cli_no_command(capsys):
     assert excinfo.value.code == 1
     captured = capsys.readouterr()
     assert "usage:" in captured.out.lower()
+
+def test_cli_new_command_parsing(capsys):
+    """Test that the 'new' command parses the description correctly."""
+    sys.argv = ["cli.py", "new", "My New Track"]
+    # Should not raise any errors or exit with status 1
+    main()
