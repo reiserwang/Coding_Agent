@@ -88,8 +88,9 @@ bun run dev
 
 | Protocol | Rule |
 |----------|------|
-| **Agent Files** | When applying agent to a project, **ALWAYS** gitignore: `agent/`, `.claude/`, `.gemini/`. |
+| **Agent Files** | When applying agent to a project, **ALWAYS** gitignore: `agent/`, `.claude/`, `.gemini/`, `.shared/`. |
 | **Documentation** | `README.md` **MUST** illustrate the system architecture and flow (e.g., using Mermaid). |
+| **Conductor** | Use `conductor/` for spec-driven development. **ALWAYS** keep `tracks.md` and `tracks/` out of the standard gitignore if they are part of the project history (or follow project specific rules). |
 
 ---
 
@@ -100,15 +101,17 @@ bun run dev
 
 | Protocol | Location | Purpose |
 |----------|----------|---------|
-| **Autonomous Iteration Loop** | `agent/orchestrator/AGENT.md` §196-220 | Enables "ship code while you sleep" sessions |
+| **Autonomous Iteration Loop** | `agent/orchestrator/AGENT.md` | Enables "ship code while you sleep" sessions |
 | **Iteration Loop Workflow** | `workflows/iteration-loop.md` | Step-by-step autonomous execution guide |
 | **SCRATCHPAD Notification** | `SCRATCHPAD.md` | Agent-to-agent communication |
+| **Conductor Workflow** | `conductor/workflow.md` | Formal spec-driven SDLC and TDD enforcement |
 
 **Why Protected:**
 - Core to autonomous agent operation
 - Enables self-correcting behavior (up to 5 iterations)
 - Provides clear escalation path when stuck
 - Essential for unattended task completion
+- **Conductor** ensures rigor for complex features via specs and formal verification.
 
 ---
 
