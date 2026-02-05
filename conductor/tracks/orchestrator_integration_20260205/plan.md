@@ -4,8 +4,8 @@
 - [x] Task: Conduct conflict analysis (Hotfix vs Track) (08c2b75)
     - [x] Analyze edge cases where a task might be too small for a track but too complex for a single message.
     - [x] Define clear criteria for "Hot Path" vs "Feature Path".
-- [ ] Task: Refine Option 1 integration mechanics
-    - [ ] Detail how the Orchestrator should handle the state of a track in `SCRATCHPAD.md`.
+- [x] Task: Refine Option 1 integration mechanics (8d47061)
+    - [x] Detail how the Orchestrator should handle the state of a track in `SCRATCHPAD.md`.
 - [ ] Task: Update `design/orchestrator-conductor-integration.md`
     - [ ] Incorporate analysis results into the design document.
 - [ ] Task: Conductor - User Manual Verification 'Design Validation & Refinement' (Protocol in workflow.md)
