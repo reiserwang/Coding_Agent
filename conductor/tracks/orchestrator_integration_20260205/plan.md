@@ -11,14 +11,14 @@
 - [x] Task: Conductor - User Manual Verification 'Design Validation & Refinement' (Protocol in workflow.md) (6b6264a)
 
 ## Phase 2: Core System Updates
-- [ ] Task: Update Orchestrator Agent Prompt
-    - [ ] Update `agent/orchestrator/AGENT.md` to reflect the refined v8.0 logic.
-    - [ ] Ensure the prompt explicitly mandates `conductor:newTrack` for feature/bug paths.
-- [ ] Task: Update Global Memory (Gemini)
-    - [ ] Update `GEMINI.md` to align with the new Orchestrator protocols.
-- [ ] Task: Update Global Memory (Claude)
-    - [ ] Update `CLAUDE.md` to align with the new Orchestrator protocols.
-- [ ] Task: Conductor - User Manual Verification 'Core System Updates' (Protocol in workflow.md)
+- [x] Task: Update Orchestrator Agent Prompt (d0229fa)
+    - [x] Update `agent/orchestrator/AGENT.md` to reflect the refined v8.0 logic.
+    - [x] Ensure the prompt explicitly mandates `conductor:newTrack` for feature/bug paths.
+- [x] Task: Update Global Memory (Gemini) (3c9cb9c)
+    - [x] Update `GEMINI.md` to align with the new Orchestrator protocols.
+- [x] Task: Update Global Memory (Claude) (3c9cb9c)
+    - [x] Update `CLAUDE.md` to align with the new Orchestrator protocols.
+- [x] Task: Conductor - User Manual Verification 'Core System Updates' (Protocol in workflow.md) (3c9cb9c)
 
 ## Phase 3: Documentation & Finalization
 - [x] Task: Update Project README (6b6264a)
